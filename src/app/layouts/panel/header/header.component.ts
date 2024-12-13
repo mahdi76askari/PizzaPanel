@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-
+import { PanelModule } from 'primeng/panel';
+import { Card } from 'primeng/card';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [],
+  imports: [PanelModule, Card],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
 })
-export class HeaderComponent {
-
-}
+export class HeaderComponent {}
