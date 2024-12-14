@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { PanelModule } from 'primeng/panel';
-import { Card } from 'primeng/card';
+
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [PanelModule, Card],
+  imports: [RouterModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  exit() {}
+}

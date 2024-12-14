@@ -1,0 +1,8 @@
+@font-face {
+  font-family: iransansX;
+  src: url("./iransansx/IRANSansXFaNum-Regular.ttf");
+}
+
+body {
+  font-family: iransansX;
+}

@@ -1,24 +1,38 @@
-import { Component, ViewChild } from '@angular/core';
-import { DrawerModule } from 'primeng/drawer';
-import { ButtonModule } from 'primeng/button';
-import { Ripple } from 'primeng/ripple';
-import { AvatarModule } from 'primeng/avatar';
-import { StyleClass } from 'primeng/styleclass';
-import { Drawer } from 'primeng/drawer';
+import { Component } from '@angular/core';
+
+import { adminSideMenu } from '../../../models/adminSideMenu';
+import { IAdminSideMenu } from '../../../interfaces/IAdminSideMenu';
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [DrawerModule, ButtonModule, Ripple, AvatarModule, StyleClass],
+  imports: [CommonModule],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
 })
 export class SidebarComponent {
-  @ViewChild('drawerRef') drawerRef!: Drawer;
-
-  closeCallback(e: any): void {
-    this.drawerRef.close(e);
+  menu = adminSideMenu;
+  child: IAdminSideMenu[] = [];
+  url = '';
+  constructor(private router: Router) {
+    router.events.subscribe((e) => {
+      if (e.type === 1) {
+        // console.log(e.type);
+        this.url = router.url.replace('/', '');
+        // console.log(this.url);
+      }
+    });
   }
 
-  visible: boolean = false;
+  ngOnInit() {}
+
+  action(item: IAdminSideMenu) {
+    if (item.url) {
+      this.router.navigateByUrl('/' + item.url);
+    } else {
+      this.child = item.child;
+    }
+  }
 }

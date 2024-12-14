@@ -1,16 +1,22 @@
-<p>header works!</p>
-<div class="card flex justify-center">
-  <p-card>
-    <p-panel header="Header">
-      <p class="m-0">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
-      </p>
-    </p-panel>
-  </p-card>
+<div class="w-full bg-gray-200 border-b h-14">
+  <div class="flex justify-between items-center h-full p-2">
+    <div class="p-2 rounded-3xl bg-gray-50 px-4 md:block hidden">
+      پنل مدیریت / نام مدیر
+    </div>
+    <div class="flex flex-row items-center">
+      <div class="md:block hidden">version: 2.0</div>
+      <button
+        [routerLink]="['/']"
+        class="hover:border-slate-400 bg-slate-300 p-2 border rounded-md"
+      >
+        فروشگاه
+      </button>
+      <button
+        (click)="exit()"
+        class="hover:border-slate-400 bg-slate-300 p-2 border rounded-md"
+      >
+        خروج
+      </button>
+    </div>
+  </div>
 </div>
