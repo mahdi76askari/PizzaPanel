@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BranchesComponent } from './branches.component';
+import { CircleButtonComponent } from './circle-button.component';
 
-describe('BranchesComponent', () => {
-  let component: BranchesComponent;
-  let fixture: ComponentFixture<BranchesComponent>;
+describe('CircleButtonComponent', () => {
+  let component: CircleButtonComponent;
+  let fixture: ComponentFixture<CircleButtonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BranchesComponent]
+      imports: [CircleButtonComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(BranchesComponent);
+    fixture = TestBed.createComponent(CircleButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
