@@ -10,6 +10,11 @@ export const routes: Routes = [
     children: [
       {
         path: '',
+        pathMatch: 'full',
+        redirectTo: 'dashboard',
+      },
+      {
+        path: 'dashboard',
         loadComponent: () =>
           import('./pages/dashboard/dashboard.component').then(
             (c) => c.DashboardComponent
@@ -30,11 +35,25 @@ export const routes: Routes = [
           ),
       },
       {
-        path: 'reports',
+        path: 'reports/branch',
         loadComponent: () =>
-          import('./pages/reports/reports.component').then(
-            (c) => c.ReportsComponent
+          import('./pages/reports/branch-report/branch-report.component').then(
+            (c) => c.BranchReportComponent
           ),
+      },
+      {
+        path: 'reports/user',
+        loadComponent: () =>
+          import('./pages/reports/user-report/user-report.component').then(
+            (c) => c.UserReportComponent
+          ),
+      },
+      {
+        path: 'reports/product',
+        loadComponent: () =>
+          import(
+            './pages/reports/product-report/product-report.component'
+          ).then((c) => c.ProductReportComponent),
       },
       {
         path: 'settings',

@@ -14,6 +14,7 @@ export class ReportSummeryComponent {
     title: '',
     amount: 0,
     change: 0,
+    icon: '',
   };
 
   getPositiveChange(value: number) {

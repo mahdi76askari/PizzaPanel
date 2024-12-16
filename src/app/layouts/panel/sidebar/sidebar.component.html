@@ -6,15 +6,17 @@
       [ngClass]="{ 'bg-gray-200': url === item.url }"
       class="px-2 py-2 hover:bg-gray-200 cursor-pointer rounded-2xl mx-3 flex items-center"
     >
-      <img [src]="'images/icons/' + item.icon" class="ml-2" />
+      <span class="px-3">
+        <a-icon [name]="item.icon"></a-icon>
+      </span>
       <span>{{ item.title }}</span>
     </div>
-    @if (child.length > 0) {
-    <div class="mr-2">
+    @if (child && child.length > 0) {
+    <div class="mr-8">
       @for (ch of item.child; track $index) {
       <div
         (click)="action(ch)"
-        class="px-2 py-4 hover:bg-gray-200 cursor-pointer rounded-xl mx-3"
+        class="px-2 py-2 hover:bg-gray-200 text-gray-700 text-sm cursor-pointer rounded-xl mx-3"
       >
         {{ ch.title }}
       </div>

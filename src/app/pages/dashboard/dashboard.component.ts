@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { IconComponent } from '../../components/elements/fonts/icon/icon.component';
 import { ReportSummeryComponent } from '../../components/blocks/report-summery/report-summery.component';
 import { IReportSummery } from '../../interfaces/IReportSummery';
 
@@ -12,9 +11,14 @@ import { IReportSummery } from '../../interfaces/IReportSummery';
 })
 export class DashboardComponent {
   reportSummery: IReportSummery[] = [
-    { title: 'سفارش ها', amount: 200, change: 20 },
-    { title: 'جمع پرداختی', amount: 200, change: -20 },
-    { title: 'سفارش لغو شده', amount: 200, change: 20 },
-    { title: 'شعب فعال', amount: 30, change: 0 },
+    { title: 'سفارش ها', amount: 200, change: 20, icon: 'pi-cart-arrow-down' },
+    { title: 'جمع پرداختی', amount: 200, change: -20, icon: 'pi-dollar' },
+    {
+      title: 'سفارش لغو شده',
+      amount: 200,
+      change: 20,
+      icon: 'pi-shopping-cart',
+    },
+    { title: 'شعب فعال', amount: 30, change: 0, icon: 'pi-building-columns' },
   ];
 }

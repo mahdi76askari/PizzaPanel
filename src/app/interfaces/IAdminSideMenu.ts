@@ -1,6 +1,6 @@
 export interface IAdminSideMenu {
   title: string;
-  url: string;
+  url?: string;
   icon: string;
-  child: IAdminSideMenu[];
+  child?: IAdminSideMenu[];
 }

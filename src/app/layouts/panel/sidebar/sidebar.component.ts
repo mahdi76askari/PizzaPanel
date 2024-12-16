@@ -18,15 +18,22 @@ export class SidebarComponent {
   menu = adminSideMenu;
   child: IAdminSideMenu[] = [];
   url = '';
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    router.events.subscribe((e) => {
+      if (e.type === 1) {
+        this.url = router.url.replace('/', '');
+      }
+    });
+  }
 
   ngOnInit() {}
 
   action(item: IAdminSideMenu) {
     if (item.url) {
+      this.child = [];
       this.router.navigateByUrl('/' + item.url);
     } else {
-      this.child = item.child;
+      this.child = item.child!;
     }
   }
 }
