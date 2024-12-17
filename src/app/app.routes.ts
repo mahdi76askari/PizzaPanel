@@ -35,6 +35,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'products',
+        loadComponent: () =>
+          import('./pages/products/products.component').then(
+            (c) => c.ProductsComponent
+          ),
+      },
+      {
         path: 'reports/branch',
         loadComponent: () =>
           import('./pages/reports/branch-report/branch-report.component').then(
