@@ -14,6 +14,13 @@ export const routes: Routes = [
         redirectTo: 'dashboard',
       },
       {
+        path: '404',
+        loadComponent: () =>
+          import('./pages/not-found/not-found.component').then(
+            (c) => c.NotFoundComponent
+          ),
+      },
+      {
         path: 'dashboard',
         loadComponent: () =>
           import('./pages/dashboard/dashboard.component').then(
@@ -82,5 +89,10 @@ export const routes: Routes = [
       import('./layouts/auth/layout/layout.component').then(
         (c) => c.LayoutComponent
       ),
+  },
+  {
+    path: '**',
+    pathMatch: 'full',
+    redirectTo: '404',
   },
 ];

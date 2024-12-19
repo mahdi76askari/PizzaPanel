@@ -11,36 +11,39 @@
       </span>
       <span>{{ item.title }}</span>
     </div>
-    @if (child && child.length > 0) {
-    <div class="mr-8">
-      @for (ch of item.child; track $index) {
-      <div
-        (click)="action(item, ch)"
-        [ngClass]="{ 'bg-gray-200': url === ch.url }"
-        class="px-2 py-2 hover:bg-gray-200 text-gray-700 text-sm cursor-pointer rounded-xl mx-3"
-      >
-        {{ ch.title }}
+    <div class="h-fit transition-all duration-500">
+      @if (child && child.length > 0) {
+      <div class="mr-8">
+        @for (ch of item.child; track $index) {
+        <div
+          (click)="action(item, ch)"
+          [ngClass]="{ 'bg-gray-200': url === ch.url }"
+          class="px-2 py-2 hover:bg-gray-200 text-gray-700 text-sm cursor-pointer rounded-xl mx-3"
+        >
+          {{ ch.title }}
+        </div>
+        }
       </div>
+
       }
     </div>
-
-    } }
+    }
   </div>
   <div class="py-2">
     <div
       class="flex items-center h-10 justify-between bottom-0 absolute px-2 w-full pb-2"
     >
       <div>
-        <a-circle-button>
+        <a-circle-button [routerLink]="['/logout']">
           <a-icon name="pi-sign-out"></a-icon>
         </a-circle-button>
       </div>
-      <div>
+      <div [routerLink]="['/settings']">
         <a-circle-button>
           <a-icon name="pi-cog"></a-icon>
         </a-circle-button>
       </div>
-      <div>
+      <div [routerLink]="['/profile']">
         <a-circle-button>
           <a-icon name="pi-user"></a-icon>
         </a-circle-button>

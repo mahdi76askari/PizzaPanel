@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { adminSideMenu } from '../../../models/adminSideMenu';
 import { IAdminSideMenu } from '../../../interfaces/IAdminSideMenu';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { IconComponent } from '../../../components/elements/fonts/icon/icon.component';
 import { CircleButtonComponent } from '../../../components/elements/button/circle-button/circle-button.component';
@@ -10,7 +10,7 @@ import { CircleButtonComponent } from '../../../components/elements/button/circl
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CommonModule, IconComponent, CircleButtonComponent],
+  imports: [CommonModule, IconComponent, CircleButtonComponent, RouterModule],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
 })
