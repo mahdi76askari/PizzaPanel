@@ -18,6 +18,7 @@ export class SidebarComponent {
   menu = adminSideMenu;
   child: IAdminSideMenu[] = [];
   url = '';
+  itemId = '';
   constructor(private router: Router) {
     router.events.subscribe((e) => {
       if (e.type === 1) {
@@ -28,12 +29,19 @@ export class SidebarComponent {
 
   ngOnInit() {}
 
-  action(item: IAdminSideMenu) {
-    if (item.url) {
-      this.child = [];
-      this.router.navigateByUrl('/' + item.url);
+  action(item: IAdminSideMenu, child?: IAdminSideMenu) {
+    if (this.itemId == item.id) {
+      if (child) {
+        this.router.navigateByUrl('/' + child.url);
+      }
     } else {
-      this.child = item.child!;
+      this.itemId = item.id;
+      if (item.url) {
+        this.child = [];
+        this.router.navigateByUrl('/' + item.url);
+      } else {
+        this.child = item.child!;
+      }
     }
   }
 }

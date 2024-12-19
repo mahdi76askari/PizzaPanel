@@ -15,7 +15,7 @@
     <div class="mr-8">
       @for (ch of item.child; track $index) {
       <div
-        (click)="action(ch)"
+        (click)="action(item, ch)"
         [ngClass]="{ 'bg-gray-200': url === ch.url }"
         class="px-2 py-2 hover:bg-gray-200 text-gray-700 text-sm cursor-pointer rounded-xl mx-3"
       >
