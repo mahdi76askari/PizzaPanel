@@ -44,8 +44,9 @@
     >
       <div class="flex items-center">
         <div class="flex items-center">
-          <div class="mx-2" title="20:18">2 دقیقه پیش</div>
           <div class="mx-2" title="شماره سفارش">#12</div>
+
+          <div class="mx-2" title="20:18">2 دقیقه پیش</div>
           <div class="mx-2" title="وضعیت">در انتظار</div>
           <div class="mx-2" title="شعبه">شعبه 1</div>
           <div class="mx-2" title="مبلغ">670.000 تومان</div>
@@ -62,7 +63,7 @@
       </div>
 
       <div>
-        <a-button>جزییات</a-button>
+        <a-button (click)="details()">جزییات</a-button>
       </div>
     </div>
   </div>
