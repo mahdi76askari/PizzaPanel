@@ -1,12 +1,21 @@
-<app-header></app-header>
+<app-header (toggle)="drawer.toggle()"></app-header>
 
-<div class="flex">
-  <div>
-    <app-sidebar></app-sidebar>
-  </div>
+<mat-drawer-container class="example-container" [hasBackdrop]="false">
+  <mat-drawer
+    #drawer
+    [mode]="sideMode"
+    [opened]="opened"
+    style="width: fit-content"
+  >
+    <div>
+      <app-sidebar></app-sidebar>
+    </div>
+  </mat-drawer>
 
-  <div class="bg-gray-100 p-3 w-full overflow-auto h-[calc(100vh-56px)]">
-    <router-outlet />
-    <app-footer></app-footer>
-  </div>
-</div>
+  <mat-drawer-content>
+    <div class="bg-gray-100 p-3 w-full overflow-auto h-[calc(100vh-56px)]">
+      <router-outlet />
+      <app-footer></app-footer>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

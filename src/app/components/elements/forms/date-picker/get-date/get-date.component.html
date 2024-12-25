@@ -1,0 +1,29 @@
+<div class="p-6">
+  <div class="my-3 flex items-center justify-between">
+    <span class="mx-1">سال : </span>
+    <select class="border p-2 rounded-lg w-24">
+      @for (y of year; track $index) {
+      <option>{{ y }}</option>
+      }
+    </select>
+  </div>
+  <div class="my-3 flex items-center justify-between">
+    <span class="mx-1">ماه : </span>
+    <select class="border p-2 rounded-lg w-24">
+      @for (m of month; track $index) {
+      <option>{{ m.name }}</option>
+      }
+    </select>
+  </div>
+  <div class="my-3 flex items-center justify-between">
+    <span class="mx-1">روز : </span>
+    <select class="border p-2 rounded-lg w-24">
+      @for (d of day; track $index) {
+      <option>{{ d }}</option>
+      }>
+    </select>
+  </div>
+  <div>
+    <a-button mode="success" size="full" (click)="submit()">ثبت</a-button>
+  </div>
+</div>

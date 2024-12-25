@@ -91,13 +91,6 @@ export const routes: Routes = [
     ],
   },
   {
-    path: 'auth',
-    loadComponent: () =>
-      import('./layouts/auth/layout/layout.component').then(
-        (c) => c.LayoutComponent
-      ),
-  },
-  {
     path: '**',
     pathMatch: 'full',
     redirectTo: '404',

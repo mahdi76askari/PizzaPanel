@@ -1,0 +1,5 @@
+<select [formControl]="fc" class="border p-2 rounded-lg w-full">
+  @for (item of options; track $index) {
+  <option [value]="item.value">{{ item.name }}</option>
+  }
+</select>
