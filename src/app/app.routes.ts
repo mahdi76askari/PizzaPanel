@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { accessGuard } from './guard/access.guard';
 
 export const routes: Routes = [
   {
@@ -7,6 +8,7 @@ export const routes: Routes = [
       import('./layouts/panel/layout/layout.component').then(
         (c) => c.LayoutComponent
       ),
+    canActivate: [accessGuard],
     children: [
       {
         path: '',
@@ -86,6 +88,29 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./pages/profile/profile.component').then(
             (c) => c.ProfileComponent
+          ),
+      },
+    ],
+  },
+  {
+    path: 'auth',
+    loadComponent: () =>
+      import('./layouts/auth/layout/layout.component').then(
+        (c) => c.LayoutComponent
+      ),
+    children: [
+      {
+        path: 'login',
+        loadComponent: () =>
+          import('./pages/auth/login/login.component').then(
+            (c) => c.LoginComponent
+          ),
+      },
+      {
+        path: 'logout',
+        loadComponent: () =>
+          import('./pages/auth/logout/logout.component').then(
+            (c) => c.LogoutComponent
           ),
       },
     ],

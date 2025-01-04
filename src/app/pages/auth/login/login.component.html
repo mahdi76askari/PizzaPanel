@@ -1,0 +1,22 @@
+<div class="flex items-center h-dvh">
+  <div class="m-auto">
+    <div>
+      <p>شماره همراه خود را وارد کنید</p>
+      <div>
+        <a-input-text [(fc)]="phone" [disabled]="step == 1 ? true : false" />
+      </div>
+    </div>
+    @if (step == 1) {
+    <div>
+      <p>کد ورود وارد کنید</p>
+      <div>
+        <a-input-text [(fc)]="otp" />
+      </div>
+    </div>
+    }
+
+    <div>
+      <a-button type="primary" (click)="login()">ورود</a-button>
+    </div>
+  </div>
+</div>

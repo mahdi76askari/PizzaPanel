@@ -1,0 +1,27 @@
+<div class="text-red-700">
+  @if (form.invalid && (form.dirty || form.touched)) { @if
+  (form.hasError('required')) {
+  <div>
+    <small>تکمیل این بخش الزامی است</small>
+  </div>
+  } @if (form.hasError('minlength')) {
+  <div>
+    <small>
+      حداقل طول رشته باید "{{ form.errors!["minlength"].requiredLength }}" باشد.
+    </small>
+  </div>
+  } @if (form.hasError('maxlength')) {
+  <div>
+    <small>طول رشته وارد شده بیش از حد انتظار است.</small>
+    <small>
+      حداکثر مقدار ورودی رشته باید "{{
+        form.errors!["maxlength"].requiredLength
+      }}" باشد.
+    </small>
+  </div>
+  } @if (form.hasError('forbiddenName')) {
+  <div>
+    <small>استفاده از این مقدار امکان پذیر نیست.</small>
+  </div>
+  } }
+</div>

@@ -1,7 +1,5 @@
 import { afterRender, Injectable, signal, WritableSignal } from '@angular/core';
 import { MotherService } from './mother.service';
-import { ISendOtp } from '../../interfaces/dto/ISendOtp';
-import { IVerifyOtp } from '../../interfaces/dto/IVerifyOtp';
 
 @Injectable({
   providedIn: 'root',
@@ -20,11 +18,11 @@ export class AccountService {
     });
   }
 
-  sendOtp(body: ISendOtp) {
+  sendOtp(body: any) {
     return this.motherService.post(this.api + '/send-otp', body);
   }
 
-  verifyOtp(body: IVerifyOtp) {
+  verifyOtp(body: any) {
     return this.motherService.post(this.api + '/verify-otp', body);
   }
 
