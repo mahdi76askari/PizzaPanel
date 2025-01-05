@@ -6,7 +6,16 @@
     <div class="border rounded-full bg-gray-200 flex items-center w-fit">
       <div
         class="rounded-full border shadow-sm p-2 cursor-pointer transition-all duration-500"
-        [ngClass]="{ 'bg-white': filter == '1' }"
+        [ngClass]="{ 'bg-white': status == '1' }"
+        (click)="selectFilter('1')"
+      >
+        <span class="text-gray-600">همه </span>
+        <span class="mx-2 font-bold">{{ total }}</span>
+      </div>
+
+      <div
+        class="rounded-full border shadow-sm p-2 cursor-pointer transition-all duration-500"
+        [ngClass]="{ 'bg-white': status == '1' }"
         (click)="selectFilter('1')"
       >
         <span class="text-gray-600">در انتظار</span>
@@ -14,7 +23,7 @@
       </div>
       <div
         class="rounded-full border shadow-sm p-2 cursor-pointer transition-all duration-500"
-        [ngClass]="{ 'bg-white': filter == '2' }"
+        [ngClass]="{ 'bg-white': status == '2' }"
         (click)="selectFilter('2')"
       >
         <span class="text-gray-600">در حال پخت </span>
@@ -22,7 +31,7 @@
       </div>
       <div
         class="rounded-full border shadow-sm p-2 cursor-pointer transition-all duration-500"
-        [ngClass]="{ 'bg-white': filter == '3' }"
+        [ngClass]="{ 'bg-white': status == '3' }"
         (click)="selectFilter('3')"
       >
         <span class="text-gray-600">در دست پیک</span>
@@ -30,7 +39,7 @@
       </div>
       <div
         class="rounded-full border shadow-sm p-2 cursor-pointer transition-all duration-500"
-        [ngClass]="{ 'bg-white': filter == '4' }"
+        [ngClass]="{ 'bg-white': status == '4' }"
         (click)="selectFilter('4')"
       >
         <span class="text-gray-600">تحویل شده </span>
@@ -39,32 +48,8 @@
     </div>
   </div>
   <div>
-    <div
-      class="bg-blue-200 border-blue-300 rounded-2xl p-3 flex items-center justify-between"
-    >
-      <div class="flex items-center">
-        <div class="flex items-center">
-          <div class="mx-2" title="شماره سفارش">#12</div>
-
-          <div class="mx-2" title="20:18">2 دقیقه پیش</div>
-          <div class="mx-2" title="وضعیت">در انتظار</div>
-          <div class="mx-2" title="شعبه">شعبه 1</div>
-          <div class="mx-2" title="مبلغ">670.000 تومان</div>
-          <div class="mx-2" title="وضعیت ارسال">ارسال با پیک</div>
-        </div>
-        <div class="flex items-center">
-          <div>اقلام:</div>
-          <div class="flex items-center">
-            <div>پیتزا پپرونی 1 عدد</div>
-            <div>پیتزا سبزیجات 2 عدد</div>
-            <div>نوشابه قوطی 2 عدد</div>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <a-button (click)="details()">جزییات</a-button>
-      </div>
-    </div>
+    @for (item of orders; track $index) {
+    <app-order-row [order]="item"></app-order-row>
+    }
   </div>
 </div>

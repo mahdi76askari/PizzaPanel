@@ -17,9 +17,9 @@ export class HeaderComponent implements OnInit {
   @Output() toggle = new EventEmitter();
 
   ngOnInit(): void {
-    setInterval(() => {
-      this.updatePersianDate();
-    }, 1000);
+    // setInterval(() => {
+    this.updatePersianDate();
+    // }, 1000);
   }
 
   doToggle() {

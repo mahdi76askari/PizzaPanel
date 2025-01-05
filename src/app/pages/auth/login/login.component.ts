@@ -5,6 +5,7 @@ import { ButtonComponent } from '../../../components/elements/button/button/butt
 import { AccountService } from '../../../services/http/account.service';
 import { FormControl, Validators } from '@angular/forms';
 import { AlertService } from '../../../services/tools/alert.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private accountService: AccountService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private router: Router
   ) {}
 
   ngOnInit() {}
@@ -52,7 +54,11 @@ export class LoginComponent implements OnInit {
       .verifyOtp({ phoneNumber: this.phone.value!, otpCode: this.otp.value! })
       .subscribe({
         next: (v: any) => {
-          if (v.data.role == 'admin') {
+          if (
+            v.data.role.find((r: any) => {
+              return r === 'Admin';
+            })
+          ) {
             localStorage.setItem('token', v.data.accessToken);
             localStorage.setItem('tokenInsert', new Date().toDateString());
 
@@ -64,6 +70,8 @@ export class LoginComponent implements OnInit {
               title: 'خوش آمدید',
               msg: 'به کاریز وارد شدید',
             });
+
+            this.router.navigateByUrl('/');
           } else {
             this.alertService.error({
               title: 'امکان وورد نیست ',
