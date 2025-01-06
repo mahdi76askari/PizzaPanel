@@ -1,0 +1,45 @@
+<div class="p-6">
+  <div class="flex items-center">
+    <div>
+      <div class="p-2 flex items-center">
+        <div>نام مشتری</div>
+        <div class="pr-2">{{ data.userId }}</div>
+      </div>
+      <div class="p-2 flex items-center">
+        <div>شعبه</div>
+        <div class="pr-2">{{ data.branchName }}</div>
+      </div>
+      <div class="p-2 flex items-center">
+        <div>زمان ثبت</div>
+        <div class="pr-2">{{ data.orderDate }}</div>
+      </div>
+      <div class="p-2 flex items-center">
+        <div>نوع پرداخت</div>
+        <div class="pr-2">{{ data.paymentMethod | enum }}</div>
+      </div>
+      <div class="p-2 flex items-center">
+        <div>وضعیت</div>
+        <div class="pr-2">{{ data.orderStatus | enum }}</div>
+      </div>
+      <div class="p-2 flex items-center">
+        <div>هزینه ارسال</div>
+        <div class="pr-2">{{ data.shippingCost }}</div>
+      </div>
+      <div class="p-2 flex items-center">
+        <div>مبلغ</div>
+        <div class="pr-2">??</div>
+      </div>
+    </div>
+    <div class="border p-2">
+      <p>اقلام:</p>
+      <div class="p-2">
+        <div>2 * پیتزا</div>
+      </div>
+    </div>
+  </div>
+  <div class="flex justify-between mt-6">
+    <a-button type="cancel" (click)="onNoClick()">بستن</a-button>
+    <a-button type="cancel">لغو سفارش</a-button>
+    <a-button type="primary">تغییر شعبه</a-button>
+  </div>
+</div>

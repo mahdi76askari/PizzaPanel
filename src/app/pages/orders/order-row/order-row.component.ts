@@ -1,5 +1,5 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
-import { OrderDetailsComponent } from '../../../components/blocks/order-details/order-details.component';
+import { OrderDetailsComponent } from '../order-details/order-details.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ButtonComponent } from '../../../components/elements/button/button/button.component';
 import { EnumPipe } from '../../../pipes/enum.pipe';
@@ -24,7 +24,7 @@ export class OrderRowComponent implements OnInit {
 
   details() {
     const dialogRef = this.dialog.open(OrderDetailsComponent, {
-      data: {},
+      data: this.order,
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -61,7 +61,7 @@ export class OrderRowComponent implements OnInit {
     const now = new Date();
 
     const diff = now.getTime() - target.getTime();
-    return diff / 1000 / 60;
     console.log(diff / 1000 / 60);
+    return (diff / 1000 / 60).toFixed(0);
   }
 }

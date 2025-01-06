@@ -51,5 +51,6 @@
     @for (item of orders; track $index) {
     <app-order-row [order]="item"></app-order-row>
     }
+    <a-loading [loading]="loading"></a-loading>
   </div>
 </div>

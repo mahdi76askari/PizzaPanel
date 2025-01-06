@@ -13,6 +13,10 @@ export class AdminService {
     return this.motherService.get(this.api + '/get-All-Orders' + param);
   }
 
+  getUsers(param: string) {
+    return this.motherService.get(this.api + '/getUsers' + param);
+  }
+
   newAddress(body: any) {
     return this.motherService.post(this.api + '/AddAddress', body);
   }

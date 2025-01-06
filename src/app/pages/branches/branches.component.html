@@ -4,10 +4,14 @@
 </div>
 
 <div class="grid grid-cols-3 gap-4">
+  @for (branch of branches; track $index) {
   <div class="p-2 border border-green-700 rounded-xl bg-white">
     <div class="flex justify-between my-2">
-      <div>شعبه 1</div>
+      <div>{{ branch.address.caption }}</div>
       <div class="text-green-700">فعال</div>
+    </div>
+    <div>
+      <p>مدیر شعبه : {{ branch.mangerUser.username }}</p>
     </div>
     <div class="flex justify-between my-2">
       <div>در حال پخت : 10</div>
@@ -19,4 +23,5 @@
       <a-button> ویرایش</a-button>
     </div>
   </div>
+  }
 </div>

@@ -1,40 +1,27 @@
 <div>
-  <p>لیست محصولات</p>
+  <p>لیست محصولات ({{ total }})</p>
 </div>
 <div class="my-2 sticky top-0">
   <div class="border rounded-full bg-gray-200 flex items-center w-fit">
     <div
       class="rounded-full border shadow-sm p-2 cursor-pointer transition-all duration-500"
-      [ngClass]="{ 'bg-white': filter == '1' }"
-      (click)="selectFilter('1')"
+      [ngClass]="{ 'bg-white': status == '0' }"
+      (click)="selectFilter('0')"
     >
-      <span class="text-gray-600">پیتزا ها</span>
-      <span class="mx-2 font-bold">21</span>
+      <span class="text-gray-600"> همه</span>
+      <span class="mx-2 font-bold">*</span>
     </div>
+
+    @for (item of groups; track $index) {
     <div
       class="rounded-full border shadow-sm p-2 cursor-pointer transition-all duration-500"
-      [ngClass]="{ 'bg-white': filter == '2' }"
-      (click)="selectFilter('2')"
+      [ngClass]="{ 'bg-white': status == item.productGroupId }"
+      (click)="selectFilter(item.productGroupId)"
     >
-      <span class="text-gray-600">سالاد</span>
-      <span class="mx-2 font-bold">7</span>
+      <span class="text-gray-600"> {{ item.name }}</span>
+      <span class="mx-2 font-bold">*</span>
     </div>
-    <div
-      class="rounded-full border shadow-sm p-2 cursor-pointer transition-all duration-500"
-      [ngClass]="{ 'bg-white': filter == '3' }"
-      (click)="selectFilter('3')"
-    >
-      <span class="text-gray-600">نوشابه</span>
-      <span class="mx-2 font-bold">4</span>
-    </div>
-    <div
-      class="rounded-full border shadow-sm p-2 cursor-pointer transition-all duration-500"
-      [ngClass]="{ 'bg-white': filter == '4' }"
-      (click)="selectFilter('4')"
-    >
-      <span class="text-gray-600">پک ها</span>
-      <span class="mx-2 font-bold">37</span>
-    </div>
+    }
   </div>
 </div>
 
@@ -44,7 +31,7 @@
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4"
     >
       @for (item of products; track $index) {
-      <a-product-box></a-product-box>
+      <a-product-box [product]="item"></a-product-box>
       }
     </div>
   </div>

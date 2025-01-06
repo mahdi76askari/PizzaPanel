@@ -1,5 +1,5 @@
 <div
-  class="bg-blue-200 border-blue-300 rounded-2xl p-3 flex items-center justify-between my-1"
+  class="bg-blue-200 border-blue-300 rounded-2xl p-3 flex items-center justify-between my-2"
 >
   <div class="flex items-center">
     <div class="flex items-center">
@@ -9,18 +9,21 @@
         {{ timeDiff(order.orderDate) }} دقیقه پیش
       </div>
       <div class="mx-2" title="وضعیت">{{ order.orderStatus | enum }}</div>
-      <div class="mx-2" title="شعبه">شعبه 1</div>
+      <div class="mx-2" title="شعبه">{{ order.branchName }}</div>
       <div class="mx-2" title="مبلغ">670.000 تومان</div>
       <div class="mx-2" title="وضعیت ارسال">ارسال با پیک</div>
+      <div class="mx-2" title="وضعیت ارسال">نام مشتری</div>
+      <div class="mx-2" title="وضعیت ارسال">نلفن مشتری</div>
+      <div class="mx-2" title="وضعیت ارسال">تحویل فوری</div>
     </div>
-    <div class="flex items-center">
+    <!-- <div class="flex items-center">
       <div>اقلام:</div>
       <div class="flex items-center">
         <div>پیتزا پپرونی 1 عدد</div>
         <div>پیتزا سبزیجات 2 عدد</div>
         <div>نوشابه قوطی 2 عدد</div>
       </div>
-    </div>
+    </div> -->
   </div>
 
   <div>
