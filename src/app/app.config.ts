@@ -9,6 +9,7 @@ import {
 } from '@angular/common/http';
 import { errorControl } from './services/interceptors/errorControl';
 import { provideToastr } from 'ngx-toastr';
+import { provideEnvironmentNgxMask } from 'ngx-mask';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,5 +21,6 @@ export const appConfig: ApplicationConfig = {
       progressBar: true,
     }),
     provideAnimationsAsync(),
+    provideEnvironmentNgxMask(),
   ],
 };

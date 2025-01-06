@@ -2,6 +2,34 @@
   <div>
     <p>لیست سفارش ها</p>
   </div>
+  <div class="flex items-center">
+    <div>
+      <div>از تاریخ:</div>
+      <div>
+        <input
+          dir="ltr"
+          class="p-1"
+          type="text"
+          mask="0000/00/00 00:00"
+          [showMaskTyped]="true"
+          [(ngModel)]="fromDate"
+        />
+      </div>
+    </div>
+    <div>
+      <div>تا تاریخ:</div>
+      <div>
+        <input
+          dir="ltr"
+          class="p-1"
+          type="text"
+          mask="0000/00/00 00:00"
+          [showMaskTyped]="true"
+          [(ngModel)]="toDate"
+        />
+      </div>
+    </div>
+  </div>
   <div class="my-2">
     <div class="border rounded-full bg-gray-200 flex items-center w-fit">
       <div

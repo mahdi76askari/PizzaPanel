@@ -1,21 +1,29 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { ButtonComponent } from '../../components/elements/button/button/button.component';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
-import { OrderDetailsComponent } from './order-details/order-details.component';
 import { AdminService } from '../../services/http/admin.service';
 import { OrderRowComponent } from './order-row/order-row.component';
 import { LoadingComponent } from '../../components/blocks/loading/loading.component';
+import { NgxMaskDirective } from 'ngx-mask';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-orders',
   standalone: true,
-  imports: [CommonModule, OrderRowComponent, LoadingComponent],
+  imports: [
+    CommonModule,
+    OrderRowComponent,
+    LoadingComponent,
+    NgxMaskDirective,
+    FormsModule,
+  ],
   templateUrl: './orders.component.html',
   styleUrl: './orders.component.scss',
 })
 export class OrdersComponent {
   status = '1';
+
+  fromDate = '1403/01/01 10:00';
+  toDate = '1403/01/01 23:59';
 
   adminService = inject(AdminService);
 

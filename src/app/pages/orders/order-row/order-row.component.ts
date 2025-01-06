@@ -40,25 +40,18 @@ export class OrderRowComponent implements OnInit {
     const dateParts = targetDateParts[0].split('/');
     const timeParts = targetDateParts[1].split(':');
 
-    console.log(dateParts);
-
-    console.log(
-      jalaali.toGregorian(
-        Number(dateParts[0]),
-        Number(dateParts[1]),
-        Number(dateParts[2])
-      )
-    );
-
     const miladi = jalaali.toGregorian(
       Number(dateParts[0]),
       Number(dateParts[1]),
       Number(dateParts[2])
     );
 
-    const target = new Date(`${miladi.gy}/${miladi.gm}/${miladi.gd}`);
+    const target = new Date(
+      `${miladi.gy}/${miladi.gm}/${miladi.gd} ${timeParts[0]}:${timeParts[1]}`
+    );
     console.log(target);
     const now = new Date();
+    console.log(now);
 
     const diff = now.getTime() - target.getTime();
     console.log(diff / 1000 / 60);
