@@ -20,10 +20,10 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './orders.component.scss',
 })
 export class OrdersComponent {
-  status = '1';
+  status = 'all';
 
-  fromDate = '1403/01/01 10:00';
-  toDate = '1403/01/01 23:59';
+  fromDate = '1403/09/01 10:00';
+  toDate = '1403/09/01 23:59';
 
   adminService = inject(AdminService);
 
@@ -41,7 +41,13 @@ export class OrdersComponent {
 
   getOrders() {
     this.loading = true;
-    const param = '';
+    this.orders = [];
+    let param = `?fromDatePersian=${this.dateFixer(
+      this.fromDate
+    )}:00&toDatePersian=${this.dateFixer(this.toDate)}:00`;
+    if (this.status != 'all') {
+      param += `&orderStatus=${this.status}`;
+    }
     this.adminService.getOrders(param).subscribe({
       next: (v: any) => {
         this.orders = v.data;
@@ -55,5 +61,33 @@ export class OrdersComponent {
 
   selectFilter(value: string) {
     this.status = value;
+    this.getOrders();
+  }
+
+  dateFixer(val: string) {
+    if (val.length == 16) {
+      return val;
+    } else {
+      let x = val.split('');
+      console.log(x);
+      return (
+        x[0] +
+        x[1] +
+        x[2] +
+        x[3] +
+        '/' +
+        x[4] +
+        x[5] +
+        '/' +
+        x[6] +
+        x[7] +
+        ' ' +
+        x[8] +
+        x[9] +
+        ':' +
+        x[10] +
+        x[11]
+      );
+    }
   }
 }

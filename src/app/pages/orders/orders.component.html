@@ -1,14 +1,14 @@
 <div>
   <div>
-    <p>لیست سفارش ها</p>
+    <p>لیست سفارش ها ({{ total }})</p>
   </div>
   <div class="flex items-center">
-    <div>
+    <div class="px-2">
       <div>از تاریخ:</div>
       <div>
         <input
           dir="ltr"
-          class="p-1"
+          class="p-1 rounded-md"
           type="text"
           mask="0000/00/00 00:00"
           [showMaskTyped]="true"
@@ -16,12 +16,12 @@
         />
       </div>
     </div>
-    <div>
+    <div class="px-2">
       <div>تا تاریخ:</div>
       <div>
         <input
           dir="ltr"
-          class="p-1"
+          class="p-1 rounded-md"
           type="text"
           mask="0000/00/00 00:00"
           [showMaskTyped]="true"
@@ -34,50 +34,68 @@
     <div class="border rounded-full bg-gray-200 flex items-center w-fit">
       <div
         class="rounded-full border shadow-sm p-2 cursor-pointer transition-all duration-500"
-        [ngClass]="{ 'bg-white': status == '1' }"
-        (click)="selectFilter('1')"
+        [ngClass]="{ 'bg-white': status == 'all' }"
+        (click)="selectFilter('all')"
       >
-        <span class="text-gray-600">همه </span>
-        <span class="mx-2 font-bold">{{ total }}</span>
+        <span class="text-gray-600 px-2">همه </span>
       </div>
 
+      <div
+        class="rounded-full border shadow-sm p-2 cursor-pointer transition-all duration-500"
+        [ngClass]="{ 'bg-white': status == '0' }"
+        (click)="selectFilter('0')"
+      >
+        <span class="text-gray-600 px-2">ثبت اولیه </span>
+      </div>
       <div
         class="rounded-full border shadow-sm p-2 cursor-pointer transition-all duration-500"
         [ngClass]="{ 'bg-white': status == '1' }"
         (click)="selectFilter('1')"
       >
-        <span class="text-gray-600">در انتظار</span>
-        <span class="mx-2 font-bold">21</span>
+        <span class="text-gray-600 px-2">تایید توسط شعبه </span>
       </div>
       <div
         class="rounded-full border shadow-sm p-2 cursor-pointer transition-all duration-500"
         [ngClass]="{ 'bg-white': status == '2' }"
         (click)="selectFilter('2')"
       >
-        <span class="text-gray-600">در حال پخت </span>
-        <span class="mx-2 font-bold">7</span>
+        <span class="text-gray-600 px-2">در حال آماده‌سازی </span>
       </div>
       <div
         class="rounded-full border shadow-sm p-2 cursor-pointer transition-all duration-500"
         [ngClass]="{ 'bg-white': status == '3' }"
         (click)="selectFilter('3')"
       >
-        <span class="text-gray-600">در دست پیک</span>
-        <span class="mx-2 font-bold">4</span>
+        <span class="text-gray-600 px-2">در دست پیک</span>
       </div>
       <div
         class="rounded-full border shadow-sm p-2 cursor-pointer transition-all duration-500"
         [ngClass]="{ 'bg-white': status == '4' }"
         (click)="selectFilter('4')"
       >
-        <span class="text-gray-600">تحویل شده </span>
-        <span class="mx-2 font-bold">37</span>
+        <span class="text-gray-600 px-2">تحویل شده </span>
+      </div>
+      <div
+        class="rounded-full border shadow-sm p-2 cursor-pointer transition-all duration-500"
+        [ngClass]="{ 'bg-white': status == '5' }"
+        (click)="selectFilter('5')"
+      >
+        <span class="text-gray-600 px-2"> لغو توسط مشتری </span>
+      </div>
+      <div
+        class="rounded-full border shadow-sm p-2 cursor-pointer transition-all duration-500"
+        [ngClass]="{ 'bg-white': status == '6' }"
+        (click)="selectFilter('6')"
+      >
+        <span class="text-gray-600 px-2"> لغو توسط کارفرما </span>
       </div>
     </div>
   </div>
   <div>
     @for (item of orders; track $index) {
     <app-order-row [order]="item"></app-order-row>
+    } @if (orders.length == 0) {
+    <div>موردی یافت نشد</div>
     }
     <a-loading [loading]="loading"></a-loading>
   </div>

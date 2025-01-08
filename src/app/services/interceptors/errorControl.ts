@@ -20,7 +20,8 @@ export function errorControl(
     catchError((error: HttpErrorResponse) => {
       switch (error.status) {
         case 401:
-          accountService.requestLogin.set(true);
+          accountService.isLogin.set(false);
+          window.location.replace('auth/logout');
           break;
         case 403:
           console.log('e4');
@@ -34,7 +35,7 @@ export function errorControl(
           break;
         case 500:
           alertService.error({
-            title: 'خطای ناشناخته',
+            title: 'خطای در سرور',
             msg: 'یک خطای ناشناخته رخ داده است.',
           });
           break;
@@ -44,9 +45,6 @@ export function errorControl(
             title: 'خطای ناشناخته',
             msg: 'یک خطای ناشناخته رخ داده است.',
           });
-          setTimeout(() => {
-            window.location.reload();
-          }, 5000);
           break;
       }
 

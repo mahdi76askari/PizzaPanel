@@ -19,7 +19,7 @@ export class OrderRowComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    console.log(this.order);
+    // console.log(this.order);
   }
 
   details() {
@@ -28,7 +28,6 @@ export class OrderRowComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
       if (result !== undefined) {
       }
     });
@@ -49,12 +48,12 @@ export class OrderRowComponent implements OnInit {
     const target = new Date(
       `${miladi.gy}/${miladi.gm}/${miladi.gd} ${timeParts[0]}:${timeParts[1]}`
     );
-    console.log(target);
+    // console.log(target);
     const now = new Date();
-    console.log(now);
+    // console.log(now);
 
     const diff = now.getTime() - target.getTime();
-    console.log(diff / 1000 / 60);
+    // console.log(diff / 1000 / 60);
     return (diff / 1000 / 60).toFixed(0);
   }
 }

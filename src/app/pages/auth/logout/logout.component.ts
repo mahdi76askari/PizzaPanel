@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { afterRender, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-logout',
@@ -7,7 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./logout.component.css'],
 })
 export class LogoutComponent implements OnInit {
-  constructor() {}
+  constructor() {
+    afterRender(() => {
+      localStorage.clear();
+      window.location.replace('auth/login');
+    });
+  }
 
   ngOnInit() {}
 }

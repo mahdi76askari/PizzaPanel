@@ -8,8 +8,7 @@
       [ngClass]="{ 'bg-white': status == '0' }"
       (click)="selectFilter('0')"
     >
-      <span class="text-gray-600"> همه</span>
-      <span class="mx-2 font-bold">*</span>
+      <span class="text-gray-600 px-2"> همه</span>
     </div>
 
     @for (item of groups; track $index) {
@@ -18,8 +17,7 @@
       [ngClass]="{ 'bg-white': status == item.productGroupId }"
       (click)="selectFilter(item.productGroupId)"
     >
-      <span class="text-gray-600"> {{ item.name }}</span>
-      <span class="mx-2 font-bold">*</span>
+      <span class="text-gray-600 px-2"> {{ item.name }}</span>
     </div>
     }
   </div>
