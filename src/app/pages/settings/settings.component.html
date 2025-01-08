@@ -1,1 +1,21 @@
-<p>settings works!</p>
+<h1 class="p-2">تنظیمات</h1>
+
+<div class="bg-white p-6">
+  <table>
+    <thead>
+      <th>کد</th>
+      <th>توضیحات</th>
+      <th>مقدار</th>
+    </thead>
+    @for (item of data; track $index) {
+    <tr>
+      <td class="border p-1">{{ item.code }}</td>
+      <td class="border p-1">{{ item.description }}</td>
+      <td class="border p-1">
+        <input class="p-1 border rounded-md" [(ngModel)]="item.value" />
+        <a-button mode="success" (click)="update(item)">ذخیره</a-button>
+      </td>
+    </tr>
+    }
+  </table>
+</div>

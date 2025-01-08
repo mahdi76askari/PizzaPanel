@@ -27,6 +27,10 @@ export function errorControl(
           console.log('e4');
           break;
         case 400:
+          alertService.error({
+            title: 'خطا در داده ورودی',
+            msg: 'داده ورودی اشتباه است.',
+          });
           console.log('e400');
           break;
         case 422:

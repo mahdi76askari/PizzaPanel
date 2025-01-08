@@ -5,6 +5,7 @@ import { OrderRowComponent } from './order-row/order-row.component';
 import { LoadingComponent } from '../../components/blocks/loading/loading.component';
 import { NgxMaskDirective } from 'ngx-mask';
 import { FormsModule } from '@angular/forms';
+import jalaali from 'jalaali-js';
 
 @Component({
   selector: 'app-orders',
@@ -36,6 +37,9 @@ export class OrdersComponent {
   loading = false;
 
   ngOnInit() {
+    let fDate = jalaali.toJalaali(new Date());
+    this.fromDate = fDate.jy + '/' + fDate.jm + '/' + fDate.jd + ' ' + '10:00';
+    this.toDate = fDate.jy + '/' + fDate.jm + '/' + fDate.jd + ' ' + '23:59';
     this.getOrders();
   }
 
