@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ReportSummeryComponent } from '../../components/blocks/report-summery/report-summery.component';
 import { IReportSummery } from '../../interfaces/IReportSummery';
+import { AdminService } from '../../services/http/admin.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,4 +22,26 @@ export class DashboardComponent {
     },
     { title: 'شعب فعال', amount: 30, change: 0, icon: 'pi-building-columns' },
   ];
+
+  constructor(private adminService: AdminService) {}
+
+  ngOnInit() {
+    this.getDashboard();
+  }
+
+  getDashboard() {
+    this.adminService.getDashboard().subscribe({
+      next: (v: any) => {
+        this.reportSummery[3].amount = v.data.activeBranches;
+        this.reportSummery[2].amount = v.data.canceledOrders;
+        this.reportSummery[2].change = v.data.canceledOrdersGrowth;
+
+        this.reportSummery[1].amount = v.data.totalPayments;
+        this.reportSummery[1].change = v.data.paymentsGrowth;
+
+        this.reportSummery[0].amount = v.data.totalOrders;
+        this.reportSummery[0].change = v.data.ordersGrowth;
+      },
+    });
+  }
 }

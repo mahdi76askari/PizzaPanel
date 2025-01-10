@@ -9,6 +9,9 @@ export class AdminService {
 
   constructor(private motherService: MotherService) {}
 
+  getDashboard() {
+    return this.motherService.get(this.api + '/get-Admin-Dashboard-Data');
+  }
   getOrders(param: string) {
     return this.motherService.get(this.api + '/get-All-Orders' + param);
   }

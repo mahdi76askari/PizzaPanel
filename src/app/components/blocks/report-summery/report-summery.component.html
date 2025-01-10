@@ -11,17 +11,6 @@
     </div>
   </div>
   <div class="px-2">
-    @if (data.change > 0) {
-    <span class="text-green-600">{{ data.change }}% رشد داشته</span>
-
-    } @else if (data.change == 0) {
-    <span class="text-gray-600"> بدون تغییر</span>
-
-    } @else {
-    <span class="text-red-600"
-      >{{ getPositiveChange(data.change) }}% کاهش داشته</span
-    >
-
-    }
+    <span class="text-green-600">{{ data.change }}</span>
   </div>
 </div>
