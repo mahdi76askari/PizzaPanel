@@ -5,13 +5,15 @@ import { ButtonComponent } from '../../../components/elements/button/button/butt
 import { EnumPipe } from '../../../pipes/enum.pipe';
 
 import jalaali from 'jalaali-js';
+import { TomanPipe } from '../../../pipes/toman.pipe';
+import { OrderStatusDirective } from '../../../directives/order-status.directive';
 
 @Component({
   selector: 'app-order-row',
   standalone: true,
   templateUrl: './order-row.component.html',
   styleUrls: ['./order-row.component.css'],
-  imports: [ButtonComponent, EnumPipe],
+  imports: [ButtonComponent, EnumPipe, TomanPipe, OrderStatusDirective],
 })
 export class OrderRowComponent implements OnInit {
   dialog = inject(MatDialog);

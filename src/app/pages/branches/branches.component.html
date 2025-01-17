@@ -13,15 +13,16 @@
     <div>
       <p>مدیر شعبه : {{ branch.mangerUser.username }}</p>
     </div>
-    <div class="flex justify-between my-2">
-      <div>در حال پخت : 10</div>
-      <div>تحویلی به پیک : 24</div>
-      <div>تکمیل شده: 50</div>
+    <div>
+      <p>شماره مدیر : {{ branch.mangerUser.phoneNumber }}</p>
     </div>
     <div class="flex justify-between my-2">
+      <div>آدرس: {{ branch.address.addressDetail }}</div>
+    </div>
+    <!-- <div class="flex justify-between my-2">
       <a-button>تماس با مدیر شعبه</a-button>
       <a-button> جزییات</a-button>
-    </div>
+    </div> -->
   </div>
   }
 </div>

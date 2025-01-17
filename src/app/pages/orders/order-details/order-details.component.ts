@@ -2,13 +2,14 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ButtonComponent } from '../../../components/elements/button/button/button.component';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EnumPipe } from '../../../pipes/enum.pipe';
+import { TomanPipe } from '../../../pipes/toman.pipe';
 
 @Component({
   selector: 'app-order-details',
   standalone: true,
   templateUrl: './order-details.component.html',
   styleUrls: ['./order-details.component.css'],
-  imports: [ButtonComponent, EnumPipe],
+  imports: [ButtonComponent, EnumPipe, TomanPipe],
 })
 export class OrderDetailsComponent implements OnInit {
   readonly dialogRef = inject(MatDialogRef<OrderDetailsComponent>);
@@ -21,4 +22,6 @@ export class OrderDetailsComponent implements OnInit {
   onNoClick(): void {
     this.dialogRef.close();
   }
+
+  cancelOrder() {}
 }

@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import { ButtonComponent } from '../../components/elements/button/button/button.component';
 import { AdminService } from '../../services/http/admin.service';
+import { TomanPipe } from '../../pipes/toman.pipe';
 interface Users {
   id: string;
   name: string;
@@ -15,7 +16,7 @@ interface Users {
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [CommonModule, MatTableModule, ButtonComponent],
+  imports: [CommonModule, MatTableModule, ButtonComponent, TomanPipe],
   templateUrl: './users.component.html',
   styleUrl: './users.component.scss',
 })
@@ -29,21 +30,9 @@ export class UsersComponent {
     'status',
     'action',
   ];
-  transactions: Users[] = [
-    {
-      id: '1',
-      name: 'aa',
-      mobile: '09132138958',
-      address: 'asdf',
-      create_date: '2024/03/03',
-      status: true,
-      action: '',
-    },
-  ];
+  transactions: Users[] = [];
 
   adminService = inject(AdminService);
-
-  users: any;
 
   total: number = 0;
   pageSize: number = 30;
@@ -63,7 +52,7 @@ export class UsersComponent {
 
     this.adminService.getUsers(param).subscribe({
       next: (v: any) => {
-        this.users = v.data;
+        this.transactions = v.data;
         this.total = v.meta.total;
         this.pageSize = v.meta.pageSize;
         this.pageNumber = v.meta.pageNumber;

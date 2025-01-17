@@ -29,6 +29,15 @@ export class EnumPipe implements PipeTransform {
       case 'CanceledByAdmin':
         result = 'لغو شده توسط مدیر سامانه ';
         break;
+      case 'Online':
+        result = 'پرداخت آنلاین';
+        break;
+      case 'Credit':
+        result = 'پرداخت اعتباری';
+        break;
+      case 'CashOnDelivery':
+        result = 'پرداخت در محل';
+        break;
 
       default:
         break;

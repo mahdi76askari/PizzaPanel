@@ -1,11 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { AdminService } from '../../services/http/admin.service';
 import { OrderRowComponent } from './order-row/order-row.component';
 import { LoadingComponent } from '../../components/blocks/loading/loading.component';
 import { NgxMaskDirective } from 'ngx-mask';
 import { FormsModule } from '@angular/forms';
 import jalaali from 'jalaali-js';
+
+import { Subject } from 'rxjs';
+import { debounceTime, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-orders',
@@ -20,7 +23,7 @@ import jalaali from 'jalaali-js';
   templateUrl: './orders.component.html',
   styleUrl: './orders.component.scss',
 })
-export class OrdersComponent {
+export class OrdersComponent implements OnInit, OnDestroy {
   status = 'all';
 
   fromDate = '1403/09/01 10:00';
@@ -36,11 +39,22 @@ export class OrdersComponent {
 
   loading = false;
 
+  private inputChangeSubject = new Subject<string>();
+  private destroy$ = new Subject<void>();
+
   ngOnInit() {
     let fDate = jalaali.toJalaali(new Date());
     this.fromDate = fDate.jy + '/' + fDate.jm + '/' + fDate.jd + ' ' + '10:00';
     this.toDate = fDate.jy + '/' + fDate.jm + '/' + fDate.jd + ' ' + '23:59';
     this.getOrders();
+    this.inputChangeSubject
+      .pipe(
+        debounceTime(1000), // Wait for 1 second of inactivity
+        takeUntil(this.destroy$) // Unsubscribe when the component is destroyed
+      )
+      .subscribe(() => {
+        this.getOrders();
+      });
   }
 
   getOrders() {
@@ -68,12 +82,23 @@ export class OrdersComponent {
     this.getOrders();
   }
 
+  ngOnDestroy() {
+    // Clean up the subscriptions
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  onInputChange(value: string) {
+    // Emit the new value to the subject
+    this.inputChangeSubject.next(value);
+  }
+
   dateFixer(val: string) {
     if (val.length == 16) {
       return val;
     } else {
       let x = val.split('');
-      console.log(x);
+      // console.log(x);
       return (
         x[0] +
         x[1] +

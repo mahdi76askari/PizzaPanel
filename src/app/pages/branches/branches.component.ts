@@ -28,7 +28,7 @@ export class BranchesComponent {
     const param = '';
     this.branchService.getBranches(param).subscribe({
       next: (v: any) => {
-        this.branches = v.data.items;
+        this.branches = v.data;
         this.total = v.meta.total;
         this.pageSize = v.meta.pageSize;
         this.pageNumber = v.meta.pageNumber;

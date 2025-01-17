@@ -1,5 +1,6 @@
 <div
-  class="bg-blue-200 border-blue-300 rounded-2xl p-3 flex items-center justify-between my-2"
+  class="border-blue-300 border rounded-2xl p-3 flex items-center justify-between my-2"
+  [appOrderStatus]="order.orderStatus"
 >
   <div class="flex items-center">
     <div class="flex items-center">
@@ -10,11 +11,16 @@
       </div>
       <div class="mx-2" title="وضعیت">{{ order.orderStatus | enum }}</div>
       <div class="mx-2" title="شعبه">{{ order.branchName }}</div>
-      <div class="mx-2" title="مبلغ">670.000 تومان</div>
-      <div class="mx-2" title="وضعیت ارسال">ارسال با پیک</div>
-      <div class="mx-2" title="وضعیت ارسال">نام مشتری</div>
-      <div class="mx-2" title="وضعیت ارسال">نلفن مشتری</div>
-      <div class="mx-2" title="وضعیت ارسال">تحویل فوری</div>
+      <div class="mx-2" title="مبلغ">{{ order.totalAmount | toman }} تومان</div>
+      <div class="mx-2" title="نام مشتری">{{ order.firstNameAndLastName }}</div>
+      <div class="mx-2" title="شماره تماس">{{ order.phoneNumber }}</div>
+      @if (order.deliveryTimeSlot) {
+      <div class="mx-2" title="وضعیت ارسال">{{ order.deliveryTimeSlot }}</div>
+
+      } @else {
+      <div class="mx-2 text-red-800" title="وضعیت ارسال">تحویل فوری</div>
+
+      }
     </div>
     <!-- <div class="flex items-center">
       <div>اقلام:</div>

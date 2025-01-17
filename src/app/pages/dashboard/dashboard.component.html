@@ -1,5 +1,10 @@
-<div class="grid grid-cols-4 gap-4">
-  @for (report of reportSummery; track $index) {
-  <a-report-summery [data]="report"></a-report-summery>
-  }
+<div>
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+    @for (report of reportSummery; track $index) {
+    <a-report-summery [data]="report"></a-report-summery>
+    }
+  </div>
+  <div class="hidden md:block mt-4">
+    <img src="images/decor.jpeg" class="m-auto rounded-xl" />
+  </div>
 </div>

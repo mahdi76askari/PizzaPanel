@@ -1,9 +1,9 @@
 <div class="p-6">
   <div class="flex items-center">
-    <div>
+    <div class="border rounded-lg">
       <div class="p-2 flex items-center">
         <div>نام مشتری</div>
-        <div class="pr-2">{{ data.userId }}</div>
+        <div class="pr-2">{{ data.firstNameAndLastName }}</div>
       </div>
       <div class="p-2 flex items-center">
         <div>شعبه</div>
@@ -21,13 +21,13 @@
         <div>وضعیت</div>
         <div class="pr-2">{{ data.orderStatus | enum }}</div>
       </div>
-      <div class="p-2 flex items-center">
+      <!-- <div class="p-2 flex items-center">
         <div>هزینه ارسال</div>
         <div class="pr-2">{{ data.shippingCost }}</div>
-      </div>
+      </div> -->
       <div class="p-2 flex items-center">
         <div>مبلغ</div>
-        <div class="pr-2">??</div>
+        <div class="pr-2">{{ data.totalAmount | toman }}</div>
       </div>
     </div>
     <div class="border p-2">
@@ -39,7 +39,6 @@
   </div>
   <div class="flex justify-between mt-6">
     <a-button type="cancel" (click)="onNoClick()">بستن</a-button>
-    <a-button type="cancel">لغو سفارش</a-button>
-    <a-button type="primary">تغییر شعبه</a-button>
+    <a-button type="cancel" (click)="cancelOrder()">لغو سفارش</a-button>
   </div>
 </div>
