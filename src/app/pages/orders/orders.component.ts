@@ -64,7 +64,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
       this.fromDate
     )}:00&toDatePersian=${this.dateFixer(this.toDate)}:00`;
     if (this.status != 'all') {
-      param += `&orderStatus=${this.status}`;
+      param += `&orderStatuses=${this.status}`;
     }
     this.adminService.getOrders(param).subscribe({
       next: (v: any) => {

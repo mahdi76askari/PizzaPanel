@@ -1,34 +1,38 @@
 <div class="p-6">
-  <div class="flex items-center">
+  <div class="">
     <div class="border rounded-lg">
-      <div class="p-2 flex items-center">
-        <div>نام مشتری</div>
-        <div class="pr-2">{{ data.firstNameAndLastName }}</div>
+      <div class="p-2 flex items-center justify-center">
+        <!-- <div>وضعیت</div> -->
+        <div class="text-blue-600">{{ data.orderStatus | enum }}</div>
       </div>
-      <div class="p-2 flex items-center">
-        <div>شعبه</div>
-        <div class="pr-2">{{ data.branchName }}</div>
-      </div>
-      <div class="p-2 flex items-center">
-        <div>زمان ثبت</div>
-        <div class="pr-2">{{ data.orderDate }}</div>
-      </div>
-      <div class="p-2 flex items-center">
-        <div>نوع پرداخت</div>
-        <div class="pr-2">{{ data.paymentMethod | enum }}</div>
-      </div>
-      <div class="p-2 flex items-center">
-        <div>وضعیت</div>
-        <div class="pr-2">{{ data.orderStatus | enum }}</div>
-      </div>
+
+      <table class="w-full">
+        <tr>
+          <td class="border p-1">نام :</td>
+          <td class="border p-1">{{ data.firstNameAndLastName }}</td>
+        </tr>
+        <tr>
+          <td class="border p-1">شعبه :</td>
+          <td class="border p-1">{{ data.branchName }}</td>
+        </tr>
+        <tr>
+          <td class="border p-1">زمان ثبت :</td>
+          <td class="border p-1">{{ data.orderDate }}</td>
+        </tr>
+        <tr>
+          <td class="border p-1">نوع پرداخت :</td>
+          <td class="border p-1">{{ data.paymentMethod | enum }}</td>
+        </tr>
+        <tr>
+          <td class="border p-1">مبلغ :</td>
+          <td class="border p-1">{{ data.totalAmount | toman }}</td>
+        </tr>
+      </table>
+
       <!-- <div class="p-2 flex items-center">
         <div>هزینه ارسال</div>
         <div class="pr-2">{{ data.shippingCost }}</div>
       </div> -->
-      <div class="p-2 flex items-center">
-        <div>مبلغ</div>
-        <div class="pr-2">{{ data.totalAmount | toman }}</div>
-      </div>
     </div>
     <div class="border p-2">
       <p>اقلام:</p>
