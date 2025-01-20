@@ -24,7 +24,8 @@ export function errorControl(
           window.location.replace('auth/logout');
           break;
         case 403:
-          console.log('e4');
+          window.location.replace('auth/logout');
+          console.log('e403');
           break;
         case 400:
           alertService.error({

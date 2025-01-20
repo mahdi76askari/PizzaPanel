@@ -44,8 +44,26 @@ export class OrdersComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     let fDate = jalaali.toJalaali(new Date());
-    this.fromDate = fDate.jy + '/' + fDate.jm + '/' + fDate.jd + ' ' + '10:00';
-    this.toDate = fDate.jy + '/' + fDate.jm + '/' + fDate.jd + ' ' + '23:59';
+    this.fromDate =
+      fDate.jy +
+      '/' +
+      fDate.jm.toString().padStart(2, '0') +
+      '/' +
+      fDate.jd.toString().padStart(2, '0') +
+      ' ' +
+      '10:00';
+
+    console.log(this.fromDate);
+    console.log(fDate.jd.toString().padStart(2, '0'));
+
+    this.toDate =
+      fDate.jy +
+      '/' +
+      fDate.jm.toString().padStart(2, '0') +
+      '/' +
+      fDate.jd.toString().padStart(2, '0') +
+      ' ' +
+      '23:59';
     this.getOrders();
     this.inputChangeSubject
       .pipe(
