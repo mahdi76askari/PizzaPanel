@@ -61,17 +61,29 @@ export class LoginComponent implements OnInit {
           ) {
             localStorage.setItem('token', v.data.accessToken);
             localStorage.setItem('tokenInsert', new Date().toDateString());
-
             localStorage.setItem('refreshToken', v.data.refreshToken);
-
             this.accountService.isLogin.set(true);
-
             this.alertService.success({
               title: 'خوش آمدید',
               msg: 'به کاریز وارد شدید',
             });
 
             this.router.navigateByUrl('/');
+          } else if (
+            v.data.role.find((r: any) => {
+              return r === 'BranchManager';
+            })
+          ) {
+            localStorage.setItem('token', v.data.accessToken);
+            localStorage.setItem('tokenInsert', new Date().toDateString());
+            localStorage.setItem('refreshToken', v.data.refreshToken);
+            this.accountService.isLogin.set(true);
+            this.alertService.success({
+              title: 'خوش آمدید',
+              msg: 'به کاریز وارد شدید',
+            });
+
+            this.router.navigateByUrl('/branch-panel');
           } else {
             this.alertService.error({
               title: 'امکان وورد نیست ',

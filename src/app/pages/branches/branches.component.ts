@@ -1,6 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, Inject, inject } from '@angular/core';
 import { ButtonComponent } from '../../components/elements/button/button/button.component';
 import { BranchService } from '../../services/http/branch.service';
+import { DialogModule } from '@angular/cdk/dialog';
+import { MatDialog } from '@angular/material/dialog';
+import { AddBranchComponent } from './add-branch/add-branch.component';
 
 @Component({
   selector: 'app-branches',
@@ -12,6 +15,8 @@ import { BranchService } from '../../services/http/branch.service';
 export class BranchesComponent {
   loading = false;
   branchService = inject(BranchService);
+
+  dialog = inject(MatDialog);
 
   branches: any = [];
 
@@ -35,5 +40,16 @@ export class BranchesComponent {
         this.loading = false;
       },
     });
+  }
+
+  addBranch() {
+    this.dialog
+      .open(AddBranchComponent)
+      .afterClosed()
+      .subscribe({
+        next: (v: any) => {
+          this.getBranches();
+        },
+      });
   }
 }

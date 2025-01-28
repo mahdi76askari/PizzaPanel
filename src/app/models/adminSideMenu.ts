@@ -22,6 +22,13 @@ export const adminSideMenu: IAdminSideMenu[] = [
     icon: 'pi-building-columns',
   },
   {
+    id: '31',
+    title: 'پلن ها',
+    url: 'plans',
+    child: [],
+    icon: 'pi-building-columns',
+  },
+  {
     id: '4',
     title: 'محصولات',
     url: 'products',

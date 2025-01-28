@@ -79,6 +79,11 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'plans',
+        loadComponent: () =>
+          import('./pages/plans/plans.component').then((c) => c.PlansComponent),
+      },
+      {
         path: 'users',
         loadComponent: () =>
           import('./pages/users/users.component').then((c) => c.UsersComponent),
@@ -88,6 +93,28 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./pages/profile/profile.component').then(
             (c) => c.ProfileComponent
+          ),
+      },
+    ],
+  },
+  {
+    path: 'branch-panel',
+    loadComponent: () =>
+      import('./layouts/panel/layout/layout.component').then(
+        (c) => c.LayoutComponent
+      ),
+    canActivate: [accessGuard],
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'branch-panel/my-orders',
+      },
+      {
+        path: 'branch-panel/my-orders',
+        loadComponent: () =>
+          import('./pages/branch-panel/my-orders/my-orders.component').then(
+            (c) => c.MyOrdersComponent
           ),
       },
     ],
