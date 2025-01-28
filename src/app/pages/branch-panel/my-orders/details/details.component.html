@@ -1,0 +1,47 @@
+<div class="p-6">
+  <div>
+    <p>{{ orderData.firstNameAndLastName }}</p>
+    <p>شماره سفارش: {{ orderData.orderId }}</p>
+  </div>
+  <div class="my-10">
+    <table class="w-full">
+      <thead>
+        <th>نام</th>
+        <th>تعداد</th>
+      </thead>
+      <tbody>
+        @for (item of orderData.cartItemes; track $index) {
+        <tr>
+          <td>{{ item.productTitle }}</td>
+
+          <td>{{ item.quantity }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  <div class="border rounded-xl my-2">
+    <p>تغییر وضعیت</p>
+    <div>
+      <select>
+        <option>1</option>
+        <option>2</option>
+      </select>
+      <a-button>ذخیره</a-button>
+    </div>
+  </div>
+
+  <div class="border rounded-xl my-2">
+    <div>
+      <p>زمان ارسال</p>
+      <a-input-text></a-input-text>
+    </div>
+    <div>
+      <p>زمان آماده سازی</p>
+      <a-input-text></a-input-text>
+    </div>
+    <div>
+      <a-button>ذخیره</a-button>
+    </div>
+  </div>
+</div>

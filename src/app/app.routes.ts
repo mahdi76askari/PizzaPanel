@@ -100,7 +100,7 @@ export const routes: Routes = [
   {
     path: 'branch-panel',
     loadComponent: () =>
-      import('./layouts/panel/layout/layout.component').then(
+      import('./layouts/branch-panel/layout/layout.component').then(
         (c) => c.LayoutComponent
       ),
     canActivate: [accessGuard],
@@ -108,13 +108,20 @@ export const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'branch-panel/my-orders',
+        redirectTo: 'my-orders',
       },
       {
-        path: 'branch-panel/my-orders',
+        path: 'my-orders',
         loadComponent: () =>
           import('./pages/branch-panel/my-orders/my-orders.component').then(
             (c) => c.MyOrdersComponent
+          ),
+      },
+      {
+        path: 'profile',
+        loadComponent: () =>
+          import('./pages/branch-panel/my-profile/my-profile.component').then(
+            (c) => c.MyProfileComponent
           ),
       },
     ],

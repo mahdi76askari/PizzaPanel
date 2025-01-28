@@ -1,0 +1,56 @@
+<div class="h-[calc(100dvh-56px)] w-[230px] bg-gray-50 border-l relative">
+  <div class="py-2">
+    @for (item of menu; track $index) {
+    <div
+      (click)="action(item)"
+      [ngClass]="{ 'bg-gray-200': url === item.url }"
+      class="px-2 py-2 hover:bg-gray-200 cursor-pointer rounded-2xl mx-3 flex items-center"
+    >
+      <span class="px-3">
+        <a-icon [name]="item.icon"></a-icon>
+      </span>
+      <span>{{ item.title }}</span>
+    </div>
+    <div class="h-fit transition-all duration-500">
+      @if (child && child.length > 0) {
+      <div class="mr-8">
+        @for (ch of item.child; track $index) {
+        <div
+          (click)="action(item, ch)"
+          [ngClass]="{ 'bg-gray-200': url === ch.url }"
+          class="px-2 py-2 hover:bg-gray-200 text-gray-700 text-sm cursor-pointer rounded-xl mx-3"
+        >
+          {{ ch.title }}
+        </div>
+        }
+      </div>
+
+      }
+    </div>
+    }
+  </div>
+  <div class="py-2">
+    <div
+      class="flex items-center h-10 justify-between bottom-0 absolute px-2 w-full pb-2"
+    >
+      <div>
+        <a-circle-button
+          [routerLink]="['/auth/logout']"
+          (click)="itemId = ' 0'"
+        >
+          <a-icon name="pi-sign-out"></a-icon>
+        </a-circle-button>
+      </div>
+      <!-- <div [routerLink]="['/settings']" (click)="itemId = ' 0'">
+        <a-circle-button>
+          <a-icon name="pi-cog"></a-icon>
+        </a-circle-button>
+      </div> -->
+      <div [routerLink]="['branch-panel/profile']" (click)="itemId = ' 0'">
+        <a-circle-button>
+          <a-icon name="pi-user"></a-icon>
+        </a-circle-button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="w-full bg-gray-200 border-b h-14">
+  <div class="flex justify-between items-center h-full p-2">
+    <div class="flex justify-between items-center">
+      <div class="p-2 rounded-3xl bg-gray-50 px-4 md:block hidden">
+        <div>پنل شعب / نام مدیر</div>
+      </div>
+      <div class="mr-2 md:mr-16">
+        <a-icon
+          name="pi-bars"
+          class="cursor-pointer"
+          (click)="doToggle()"
+        ></a-icon>
+      </div>
+    </div>
+
+    <div class="flex flex-row items-center">
+      <!-- <div class="mx-4">{{ time }}</div>  -->
+      <div class="mx-4">{{ day }}</div>
+
+      <div class="mx-4">{{ date }}</div>
+      <!-- <div class="md:block hidden">version: 2.0</div> -->
+    </div>
+  </div>
+</div>

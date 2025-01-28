@@ -1,1 +1,27 @@
-<p>my-orders works!</p>
+<div>
+  <table>
+    <thead>
+      <th>شماره</th>
+      <th>مشتری</th>
+      <th>زمان سفارش</th>
+      <th>زمان تحویل</th>
+      <th>وضعیت</th>
+    </thead>
+    <tbody>
+      @for (item of orders; track $index) {
+      <tr
+        [appOrderStatus]="item.orderStatus"
+        (click)="openDetails(item.orderId)"
+      >
+        <td>{{ item.orderId }}</td>
+
+        <td>{{ item.firstNameAndLastName }}</td>
+
+        <td>{{ item.orderDate | shamsiTime }}</td>
+        <td>{{ item.orderDate | shamsiTime }}</td>
+        <td>{{ item.orderStatus | enum }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
