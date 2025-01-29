@@ -5,20 +5,26 @@ import { DialogRef } from '@angular/cdk/dialog';
 import { OrderService } from '../../../../services/http/order.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ButtonComponent } from '../../../../components/elements/button/button/button.component';
-import { InputTextComponent } from '../../../../components/elements/forms/input-text/input-text.component';
+import { FormGroup, FormsModule } from '@angular/forms';
+import { InputTimeMinComponent } from '../../../../components/elements/forms/input-time-min/input-time-min.component';
+import { IconComponent } from '../../../../components/elements/fonts/icon/icon.component';
 
 @Component({
   selector: 'app-details',
   standalone: true,
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.css'],
-  imports: [ButtonComponent, InputTextComponent],
+  imports: [ButtonComponent, FormsModule, InputTimeMinComponent, IconComponent],
 })
 export class DetailsComponent implements OnInit {
   dialogRef = inject(DialogRef<DetailsComponent>);
   data = inject<any>(MAT_DIALOG_DATA);
 
   orderData: any = [];
+
+  orderStatus: any;
+
+  // form = new FormGroup()
   constructor(
     private bmService: BranchManagerService,
     private orderService: OrderService,
@@ -33,6 +39,7 @@ export class DetailsComponent implements OnInit {
     this.orderService.getOrder(this.data.id).subscribe({
       next: (v: any) => {
         this.orderData = v.data;
+        this.orderStatus = v.data.orderStatus;
       },
     });
   }
@@ -60,5 +67,9 @@ export class DetailsComponent implements OnInit {
         this.dialogRef.close();
       },
     });
+  }
+
+  close() {
+    this.dialogRef.close();
   }
 }

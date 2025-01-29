@@ -15,6 +15,7 @@ export class ButtonComponent {
     'primary';
   @Input() size: 'full' | 'medium' | 'small' = 'medium';
   @Input() loading: boolean = false;
+  @Input() disabled: boolean = false;
 
   loadingIcon = faCircleNotch;
 }

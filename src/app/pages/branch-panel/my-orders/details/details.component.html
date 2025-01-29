@@ -1,5 +1,12 @@
-<div class="p-6">
+<div class="p-6 h-[650px] overflow-auto">
   <div>
+    <p
+      class="font-sm font-light mb-2 cursor-pointer text-center text-red-700"
+      (click)="close()"
+    >
+      <a-icon name="pi-times"></a-icon>
+      بستن
+    </p>
     <p>{{ orderData.firstNameAndLastName }}</p>
     <p>شماره سفارش: {{ orderData.orderId }}</p>
   </div>
@@ -20,28 +27,55 @@
       </tbody>
     </table>
   </div>
-  <div class="border rounded-xl my-2">
-    <p>تغییر وضعیت</p>
+  <div class="my-2">
+    <p class="my-2">اعلام وضعیت:</p>
+
+    @if (orderStatus == 'Initial') {
     <div>
-      <select>
-        <option>1</option>
-        <option>2</option>
-      </select>
-      <a-button>ذخیره</a-button>
+      <a-button size="full" (click)="setStatus(orderData.orderId, '1')"
+        >سفارش دریافت کردم</a-button
+      >
     </div>
+    }@else if(orderStatus == 'ApprovedByBranch'){
+    <div>
+      <div>
+        <p>مدت آماده سازی</p>
+        <a-input-time-min></a-input-time-min>
+      </div>
+
+      <div class="mb-2">
+        <p>مدت ارسال</p>
+        <a-input-time-min></a-input-time-min>
+      </div>
+
+      <a-button size="full" (click)="setStatus(orderData.orderId, '2')"
+        >در حال اماده سازی هستم</a-button
+      >
+    </div>
+    }@else if(orderStatus == 'Preparing'){
+    <div>
+      <a-button size="full" (click)="setStatus(orderData.orderId, '3')"
+        >سفارش تحویل پیک دادم
+      </a-button>
+    </div>
+    }
   </div>
 
+  <!-- @if (orderStatus == 'ApprovedByBranch') {
   <div class="border rounded-xl my-2">
     <div>
-      <p>زمان ارسال</p>
-      <a-input-text></a-input-text>
+      <p>مدت آماده سازی</p>
+      <a-input-time-min></a-input-time-min>
     </div>
+
     <div>
-      <p>زمان آماده سازی</p>
-      <a-input-text></a-input-text>
+      <p>مدت ارسال</p>
+      <a-input-time-min></a-input-time-min>
     </div>
+
     <div>
       <a-button>ذخیره</a-button>
     </div>
   </div>
+  } -->
 </div>
