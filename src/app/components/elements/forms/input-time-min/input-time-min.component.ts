@@ -33,8 +33,8 @@ export class InputTimeMinComponent implements OnInit {
     this.fc.valueChanges.subscribe({
       next: () => {
         if (this.fc) {
-          if (this.fc.value.length > 2) {
-            this.fc.setValue(this.fc.value.value.slice(0, 2)); // Truncate to 2 digits
+          if (this.fc.value.toString().length > 2) {
+            this.fc.setValue(this.fc.value.toString().slice(0, 2)); // Truncate to 2 digits
           }
         }
       },

@@ -5,7 +5,7 @@ import { DialogRef } from '@angular/cdk/dialog';
 import { OrderService } from '../../../../services/http/order.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ButtonComponent } from '../../../../components/elements/button/button/button.component';
-import { FormGroup, FormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule } from '@angular/forms';
 import { InputTimeMinComponent } from '../../../../components/elements/forms/input-time-min/input-time-min.component';
 import { IconComponent } from '../../../../components/elements/fonts/icon/icon.component';
 
@@ -24,7 +24,8 @@ export class DetailsComponent implements OnInit {
 
   orderStatus: any;
 
-  // form = new FormGroup()
+  preparationTime = new FormControl();
+  shippingTime = new FormControl();
   constructor(
     private bmService: BranchManagerService,
     private orderService: OrderService,
@@ -44,15 +45,15 @@ export class DetailsComponent implements OnInit {
     });
   }
 
-  setTime(orderId: any) {
+  setTime(orderId: any, status: any) {
     const body = {
       orderId: orderId,
-      preparationTime: '',
-      shippingTime: '',
+      preparationTime: this.preparationTime.value,
+      shippingTime: this.shippingTime.value,
     };
     this.bmService.updateTimes(body).subscribe({
       next: (v: any) => {
-        this.dialogRef.close();
+        this.setStatus(orderId, status);
       },
     });
   }

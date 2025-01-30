@@ -32,7 +32,7 @@
 
     @if (orderStatus == 'Initial') {
     <div>
-      <a-button size="full" (click)="setStatus(orderData.orderId, '1')"
+      <a-button size="full" (click)="setStatus(orderData.orderId, 1)"
         >سفارش دریافت کردم</a-button
       >
     </div>
@@ -40,21 +40,21 @@
     <div>
       <div>
         <p>مدت آماده سازی</p>
-        <a-input-time-min></a-input-time-min>
+        <a-input-time-min [(fc)]="preparationTime"></a-input-time-min>
       </div>
 
       <div class="mb-2">
         <p>مدت ارسال</p>
-        <a-input-time-min></a-input-time-min>
+        <a-input-time-min [(fc)]="shippingTime"></a-input-time-min>
       </div>
 
-      <a-button size="full" (click)="setStatus(orderData.orderId, '2')"
+      <a-button size="full" (click)="setTime(orderData.orderId, 2)"
         >در حال اماده سازی هستم</a-button
       >
     </div>
     }@else if(orderStatus == 'Preparing'){
     <div>
-      <a-button size="full" (click)="setStatus(orderData.orderId, '3')"
+      <a-button size="full" (click)="setStatus(orderData.orderId, 3)"
         >سفارش تحویل پیک دادم
       </a-button>
     </div>

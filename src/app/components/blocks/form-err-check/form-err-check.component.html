@@ -23,5 +23,13 @@
   <div>
     <small>استفاده از این مقدار امکان پذیر نیست.</small>
   </div>
+  } @if (form.hasError('min')) {
+  <div>
+    <small>حداقل مجاز رعایت نشده</small>
+  </div>
+  } @if (form.hasError('max')) {
+  <div>
+    <small>مقدار وارد شده بیش از حد مجاز است.</small>
+  </div>
   } }
 </div>
