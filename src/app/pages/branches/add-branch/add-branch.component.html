@@ -1,1 +1,63 @@
-<div class="p-6">commig soon...</div>
+<div class="p-6">
+  <div class="flex">
+    <div>
+      <div>
+        <div>
+          <span>عنوان</span>
+          <a-input-text></a-input-text>
+        </div>
+        <div>
+          <span>آدرس</span>
+          <a-input-text></a-input-text>
+        </div>
+        <div>
+          <span>پلاک</span>
+          <a-input-text></a-input-text>
+        </div>
+        <div>
+          <span>واحد</span>
+          <a-input-text></a-input-text>
+        </div>
+      </div>
+      <div>
+        <div>
+          <span>انتخاب مدیر</span>
+
+          <a-select></a-select>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p>ساعات کاری:</p>
+      <div>
+        <span>شنبه صبح </span>
+        <div class="flex items-center">
+          <div>از :</div>
+          <div>
+            <input
+              dir="ltr"
+              class="p-1 rounded-md"
+              type="text"
+              mask=" 00:00"
+              [showMaskTyped]="true"
+              [(ngModel)]="saturdayMorningFrom"
+            />
+          </div>
+        </div>
+        <div class="flex items-center">
+          <div>تا :</div>
+          <div>
+            <input
+              dir="ltr"
+              class="p-1 rounded-md"
+              type="text"
+              mask=" 00:00"
+              [showMaskTyped]="true"
+              [(ngModel)]="saturdayMorningTo"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
