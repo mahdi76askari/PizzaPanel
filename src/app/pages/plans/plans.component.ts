@@ -3,13 +3,14 @@ import { ButtonComponent } from '../../components/elements/button/button/button.
 import { PlansService } from '../../services/http/plans.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddPlanComponent } from './add-plan/add-plan.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-plans',
   standalone: true,
   templateUrl: './plans.component.html',
   styleUrls: ['./plans.component.css'],
-  imports: [ButtonComponent],
+  imports: [ButtonComponent, RouterModule],
 })
 export class PlansComponent implements OnInit {
   plans: any = [];

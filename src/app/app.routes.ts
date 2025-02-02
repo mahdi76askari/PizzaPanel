@@ -84,6 +84,13 @@ export const routes: Routes = [
           import('./pages/plans/plans.component').then((c) => c.PlansComponent),
       },
       {
+        path: 'plans/add',
+        loadComponent: () =>
+          import('./pages/plans/add-plan/add-plan.component').then(
+            (c) => c.AddPlanComponent
+          ),
+      },
+      {
         path: 'users',
         loadComponent: () =>
           import('./pages/users/users.component').then((c) => c.UsersComponent),

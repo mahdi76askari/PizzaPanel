@@ -33,7 +33,9 @@
               "@angular/material/prebuilt-themes/azure-blue.css",
               "node_modules/ngx-toastr/toastr.css",
               "src/styles.scss",
-              "public/fonts/font.css"
+              "public/fonts/font.css",
+              "@neshan-maps-platform/mapbox-gl/dist/NeshanMapboxGl.css",
+              "@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css"
             ],
             "scripts": []
           },

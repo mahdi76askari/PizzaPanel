@@ -1,1 +1,54 @@
-<div class="p-6"></div>
+<div class="p-6">
+  <div class="flex">
+    <div class="ml-2">
+      <div>
+        <div>
+          <span>عنوان</span>
+          <a-input-text></a-input-text>
+        </div>
+        <div>
+          <span>هزینه طرح</span>
+          <a-input-text></a-input-text>
+        </div>
+        <div>
+          <span>مدت (ماه) </span>
+          <a-input-text></a-input-text>
+        </div>
+        <div>
+          <span>هزینه ارسال</span>
+          <a-input-text></a-input-text>
+        </div>
+        <div>
+          <span>مدت گارانتی 50 درصد رایگان</span>
+          <a-input-text></a-input-text>
+        </div>
+        <div>
+          <span>مدت گارانتی 100 درصد رایگان</span>
+          <a-input-text></a-input-text>
+        </div>
+        <div>
+          <span>اجازه تغییر آدرس </span>
+
+          <a-select></a-select>
+        </div>
+        <div>
+          <span>دفعات مجاز تغییر آدرس</span>
+          <a-input-text></a-input-text>
+        </div>
+        <div>
+          <span>سطح کاربری</span>
+          <a-select></a-select>
+        </div>
+        <div>
+          <a-button (click)="save()">ذخیره</a-button>
+        </div>
+      </div>
+    </div>
+    <div class="w-full">
+      <p>محدوده خدمات:</p>
+      <div>
+        <div id="map" class="w-full h-[645px]"></div>
+      </div>
+    </div>
+  </div>
+</div>
