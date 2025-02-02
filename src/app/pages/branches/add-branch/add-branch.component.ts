@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { InputTextComponent } from '../../../components/elements/forms/input-text/input-text.component';
 import { SelectComponent } from '../../../components/elements/forms/select/select.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgxMaskDirective } from 'ngx-mask';
+import { TimeRangeComponent } from './time-range/time-range.component';
 
 @Component({
   selector: 'app-add-branch',
@@ -12,9 +12,9 @@ import { NgxMaskDirective } from 'ngx-mask';
   imports: [
     InputTextComponent,
     SelectComponent,
-    NgxMaskDirective,
     FormsModule,
     ReactiveFormsModule,
+    TimeRangeComponent,
   ],
 })
 export class AddBranchComponent implements OnInit {

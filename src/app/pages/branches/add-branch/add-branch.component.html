@@ -1,6 +1,6 @@
 <div class="p-6">
   <div class="flex">
-    <div>
+    <div class="ml-2">
       <div>
         <div>
           <span>عنوان</span>
@@ -30,32 +30,91 @@
     <div>
       <p>ساعات کاری:</p>
       <div>
-        <span>شنبه صبح </span>
-        <div class="flex items-center">
-          <div>از :</div>
-          <div>
-            <input
-              dir="ltr"
-              class="p-1 rounded-md"
-              type="text"
-              mask=" 00:00"
-              [showMaskTyped]="true"
-              [(ngModel)]="saturdayMorningFrom"
-            />
-          </div>
+        <div class="flex items-center my-2">
+          <app-time-range
+            [title]="'صبح شنبه'"
+            [(from)]="saturdayMorningFrom"
+            [(to)]="saturdayMorningTo"
+          ></app-time-range>
+          <app-time-range
+            [title]="'عصر شنبه'"
+            [(from)]="saturdayMorningFrom"
+            [(to)]="saturdayMorningTo"
+          ></app-time-range>
         </div>
-        <div class="flex items-center">
-          <div>تا :</div>
-          <div>
-            <input
-              dir="ltr"
-              class="p-1 rounded-md"
-              type="text"
-              mask=" 00:00"
-              [showMaskTyped]="true"
-              [(ngModel)]="saturdayMorningTo"
-            />
-          </div>
+
+        <div class="flex items-center my-2">
+          <app-time-range
+            [title]="'صبح یکشنبه'"
+            [(from)]="saturdayMorningFrom"
+            [(to)]="saturdayMorningTo"
+          ></app-time-range>
+          <app-time-range
+            [title]="'عصر یکشنبه'"
+            [(from)]="saturdayMorningFrom"
+            [(to)]="saturdayMorningTo"
+          ></app-time-range>
+        </div>
+        <div class="flex items-center my-2">
+          <app-time-range
+            [title]="'صبح دوشنبه'"
+            [(from)]="saturdayMorningFrom"
+            [(to)]="saturdayMorningTo"
+          ></app-time-range>
+          <app-time-range
+            [title]="'عصر دوشنبه'"
+            [(from)]="saturdayMorningFrom"
+            [(to)]="saturdayMorningTo"
+          ></app-time-range>
+        </div>
+        <div class="flex items-center my-2">
+          <app-time-range
+            [title]="'صبح سه شنبه'"
+            [(from)]="saturdayMorningFrom"
+            [(to)]="saturdayMorningTo"
+          ></app-time-range>
+          <app-time-range
+            [title]="'عصر سه شنبه'"
+            [(from)]="saturdayMorningFrom"
+            [(to)]="saturdayMorningTo"
+          ></app-time-range>
+        </div>
+        <div class="flex items-center my-2">
+          <app-time-range
+            [title]="'صبح چهارشنبه'"
+            [(from)]="saturdayMorningFrom"
+            [(to)]="saturdayMorningTo"
+          ></app-time-range>
+          <app-time-range
+            [title]="'عصر چهارشنبه'"
+            [(from)]="saturdayMorningFrom"
+            [(to)]="saturdayMorningTo"
+          ></app-time-range>
+        </div>
+
+        <div class="flex items-center my-2">
+          <app-time-range
+            [title]="'صبح پنجشنبه'"
+            [(from)]="saturdayMorningFrom"
+            [(to)]="saturdayMorningTo"
+          ></app-time-range>
+          <app-time-range
+            [title]="'عصر پنجشنبه'"
+            [(from)]="saturdayMorningFrom"
+            [(to)]="saturdayMorningTo"
+          ></app-time-range>
+        </div>
+        <div class="flex items-center my-2">
+          <app-time-range
+            [title]="'صبح جمعه'"
+            [(from)]="saturdayMorningFrom"
+            [(to)]="saturdayMorningTo"
+          ></app-time-range>
+          <app-time-range
+            [title]="'عصر جمعه'"
+            [(from)]="saturdayMorningFrom"
+            [(to)]="saturdayMorningTo"
+          ></app-time-range>
         </div>
       </div>
     </div>

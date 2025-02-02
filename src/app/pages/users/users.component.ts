@@ -29,12 +29,14 @@ interface Users {
 })
 export class UsersComponent {
   displayedColumns: string[] = [
-    '#',
+    'userId',
     'name',
     'mobile',
     'address',
     'create_date',
     'status',
+    'planName',
+    'planExpirationDateShamsi',
     'action',
   ];
   transactions: Users[] = [];
