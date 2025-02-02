@@ -5,6 +5,8 @@ import { ButtonComponent } from '../../components/elements/button/button/button.
 import { AdminService } from '../../services/http/admin.service';
 import { TomanPipe } from '../../pipes/toman.pipe';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
+import { NewUserComponent } from './new-user/new-user.component';
 interface Users {
   id: string;
   name: string;
@@ -51,6 +53,8 @@ export class UsersComponent {
 
   groups: any;
 
+  dialog = inject(MatDialog);
+
   ngOnInit() {
     this.getUsers();
   }
@@ -75,5 +79,16 @@ export class UsersComponent {
     this.pageNumber = event.pageIndex;
     this.pageSize = event.pageSize;
     this.getUsers();
+  }
+
+  addUser() {
+    this.dialog
+      .open(NewUserComponent)
+      .afterClosed()
+      .subscribe({
+        next: (v: any) => {
+          this.getUsers();
+        },
+      });
   }
 }

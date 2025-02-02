@@ -1,0 +1,31 @@
+<div class="p-6">
+  <div class="flex">
+    <div class="ml-2">
+      <div>
+        <div>
+          <span>نام</span>
+          <a-input-text [(ngModel)]="firstNameAndLastName"></a-input-text>
+        </div>
+        <div>
+          <span> تلفن</span>
+          <a-input-text [(ngModel)]="phoneNumber"></a-input-text>
+        </div>
+        <div>
+          <span> نقش کاربری</span>
+          <a-select [options]="rols"></a-select>
+        </div>
+        <div>
+          <span>شرکت وابسته</span>
+          <a-select></a-select>
+        </div>
+        <div>
+          <span>پلن فعال</span>
+          <a-select></a-select>
+        </div>
+        <div>
+          <a-button (click)="save()">ذخیره</a-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

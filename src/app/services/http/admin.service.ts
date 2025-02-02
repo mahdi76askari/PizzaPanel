@@ -23,4 +23,7 @@ export class AdminService {
   newAddress(body: any) {
     return this.motherService.post(this.api + '/AddAddress', body);
   }
+  newUser(body: any) {
+    return this.motherService.post(this.api + '/create-user-by-admin', body);
+  }
 }
