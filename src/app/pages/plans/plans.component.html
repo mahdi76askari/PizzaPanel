@@ -9,22 +9,36 @@
   @for (plan of plans; track $index) {
   <div class="p-2 border border-green-700 rounded-xl bg-white">
     <div class="flex justify-between my-2">
-      <div>{{ plan.address.caption }}</div>
+      <div>{{ plan.planName }}</div>
       <div class="text-green-700">فعال</div>
     </div>
     <div>
-      <p>مدیر شعبه : {{ plan.mangerUser.username }}</p>
+      <p>هزینه : {{ plan.planPrice }}</p>
     </div>
     <div>
-      <p>شماره مدیر : {{ plan.mangerUser.phoneNumber }}</p>
+      <p>سطح کاربر : {{ plan.productPriceLevel }}</p>
     </div>
     <div class="flex justify-between my-2">
-      <div>آدرس: {{ plan.address.addressDetail }}</div>
+      <div>گارانتی نصف قیمت: {{ plan.guaranteeReturnTimeHalf }}</div>
     </div>
-    <!-- <div class="flex justify-between my-2">
-      <a-button>تماس با مدیر شعبه</a-button>
-      <a-button> جزییات</a-button>
-    </div> -->
+    <div class="flex justify-between my-2">
+      <div>گارانتی رایگان : {{ plan.guaranteeReturnTimeFull }}</div>
+    </div>
+    <div class="flex justify-between my-2">
+      <div>مدت : {{ plan.durationInMonths }}</div>
+    </div>
+    <div class="flex justify-between my-2">
+      <div>هزینه ارسال : {{ plan.deliveryFee }}</div>
+    </div>
+    <div class="flex justify-between my-2">
+      <div>اجازه تغییر آدرس : {{ plan.allowsFloatingAddress }}</div>
+    </div>
+    <div class="flex justify-between my-2">
+      <div>دفعات مجاز تغییر آدرس : {{ plan.allowedAddressChanges }}</div>
+    </div>
+    <div class="flex justify-between my-2">
+      <a-button (click)="edit()"> ویرایش</a-button>
+    </div>
   </div>
   }
 </div>

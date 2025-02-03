@@ -95,6 +95,14 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./pages/users/users.component').then((c) => c.UsersComponent),
       },
+
+      {
+        path: 'company',
+        loadComponent: () =>
+          import('./pages/company/company.component').then(
+            (c) => c.CompanyComponent
+          ),
+      },
       {
         path: 'profile',
         loadComponent: () =>

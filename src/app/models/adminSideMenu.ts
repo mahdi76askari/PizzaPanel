@@ -42,6 +42,13 @@ export const adminSideMenu: IAdminSideMenu[] = [
     child: [],
     icon: 'pi-users',
   },
+  {
+    id: '55',
+    title: 'شرکت ها',
+    url: 'company',
+    child: [],
+    icon: 'pi-users',
+  },
   // {
   //   id: '6',
   //   title: 'گزارش ها',

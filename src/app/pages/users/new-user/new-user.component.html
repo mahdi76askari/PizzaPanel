@@ -1,29 +1,30 @@
-<div class="p-6">
+<div class="p-10">
   <div class="flex">
     <div class="ml-2">
       <div>
         <div>
           <span>نام</span>
-          <a-input-text [(ngModel)]="firstNameAndLastName"></a-input-text>
+          <a-input-text [(fc)]="firstNameAndLastName"></a-input-text>
         </div>
         <div>
           <span> تلفن</span>
-          <a-input-text [(ngModel)]="phoneNumber"></a-input-text>
+          <a-input-text [(fc)]="phoneNumber"></a-input-text>
         </div>
         <div>
           <span> نقش کاربری</span>
-          <a-select [options]="rols"></a-select>
+          <a-select [options]="rols" [(fc)]="roleId"></a-select>
         </div>
         <div>
           <span>شرکت وابسته</span>
-          <a-select></a-select>
+          <a-select [options]="companies" [(fc)]="companyId"></a-select>
         </div>
         <div>
           <span>پلن فعال</span>
-          <a-select></a-select>
+          <a-select [options]="plans" [(fc)]="planId"></a-select>
         </div>
-        <div>
+        <div class="mt-3 flex justify-between">
           <a-button (click)="save()">ذخیره</a-button>
+          <a-button (click)="cancel()">انصراف</a-button>
         </div>
       </div>
     </div>

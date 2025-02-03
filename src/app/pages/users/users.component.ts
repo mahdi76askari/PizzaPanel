@@ -47,7 +47,7 @@ export class UsersComponent {
 
   total: number = 0;
   pageSize: number = 25;
-  pageNumber: number = 0;
+  pageNumber: number = 1;
 
   loading = false;
 
@@ -60,8 +60,10 @@ export class UsersComponent {
   }
 
   getUsers() {
+    console.log(this.pageNumber);
+
     this.loading = true;
-    let param = `?pageSize=${this.pageSize}&pageNumber=${this.pageNumber + 1}`;
+    let param = `?pageSize=${this.pageSize}&pageNumber=${this.pageNumber}`;
 
     this.adminService.getUsers(param).subscribe({
       next: (v: any) => {
@@ -75,7 +77,6 @@ export class UsersComponent {
   }
 
   pagination(event: any) {
-    console.log(event);
     this.pageNumber = event.pageIndex;
     this.pageSize = event.pageSize;
     this.getUsers();

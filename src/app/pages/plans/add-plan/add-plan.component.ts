@@ -5,13 +5,14 @@ import { SelectComponent } from '../../../components/elements/forms/select/selec
 import nmp_mapboxgl from '@neshan-maps-platform/mapbox-gl';
 import MapboxDraw from '@mapbox/mapbox-gl-draw';
 import { ButtonComponent } from '../../../components/elements/button/button/button.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-add-plan',
   standalone: true,
   templateUrl: './add-plan.component.html',
   styleUrls: ['./add-plan.component.css'],
-  imports: [InputTextComponent, SelectComponent, ButtonComponent],
+  imports: [InputTextComponent, SelectComponent, ButtonComponent, RouterModule],
 })
 export class AddPlanComponent implements OnInit {
   form = new FormGroup({

@@ -45,4 +45,6 @@ export class PlansComponent implements OnInit {
         },
       });
   }
+
+  edit() {}
 }
