@@ -13,7 +13,7 @@
       <div class="text-green-700">فعال</div>
     </div>
     <div>
-      <p>هزینه : {{ plan.planPrice }}</p>
+      <p>هزینه : {{ plan.planPrice | toman }}</p>
     </div>
     <div>
       <p>سطح کاربر : {{ plan.productPriceLevel }}</p>
@@ -30,12 +30,21 @@
     <div class="flex justify-between my-2">
       <div>هزینه ارسال : {{ plan.deliveryFee }}</div>
     </div>
+
     <div class="flex justify-between my-2">
-      <div>اجازه تغییر آدرس : {{ plan.allowsFloatingAddress }}</div>
+      @if (plan.allowsFloatingAddress) {
+      <div>اجازه تغییر آدرس : دارد</div>
+
+      }@else {
+      <div>اجازه تغییر آدرس : ندراد</div>
+
+      }
     </div>
+
     <div class="flex justify-between my-2">
       <div>دفعات مجاز تغییر آدرس : {{ plan.allowedAddressChanges }}</div>
     </div>
+
     <div class="flex justify-between my-2">
       <a-button (click)="edit()"> ویرایش</a-button>
     </div>

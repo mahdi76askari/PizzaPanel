@@ -4,13 +4,14 @@ import { PlansService } from '../../services/http/plans.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddPlanComponent } from './add-plan/add-plan.component';
 import { RouterModule } from '@angular/router';
+import { TomanPipe } from '../../pipes/toman.pipe';
 
 @Component({
   selector: 'app-plans',
   standalone: true,
   templateUrl: './plans.component.html',
   styleUrls: ['./plans.component.css'],
-  imports: [ButtonComponent, RouterModule],
+  imports: [ButtonComponent, RouterModule, TomanPipe],
 })
 export class PlansComponent implements OnInit {
   plans: any = [];

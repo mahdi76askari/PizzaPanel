@@ -14,17 +14,7 @@ import { AddCompanyComponent } from './add-company/add-company.component';
   imports: [ButtonComponent, MatPaginatorModule, MatTableModule],
 })
 export class CompanyComponent implements OnInit {
-  displayedColumns: string[] = [
-    'userId',
-    'name',
-    'mobile',
-    'address',
-    'create_date',
-    'status',
-    'planName',
-    'planExpirationDateShamsi',
-    'action',
-  ];
+  displayedColumns: string[] = ['userId', 'name', 'action'];
   transactions: any[] = [];
 
   total: number = 0;
@@ -38,18 +28,15 @@ export class CompanyComponent implements OnInit {
   dialog = inject(MatDialog);
   constructor(private companyService: CompanyService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getCompanies();
+  }
 
   getCompanies() {
     const param = '';
     this.companyService.getCompanies(param).subscribe({
       next: (v: any) => {
-        this.companies = v.data.map((d: any) => {
-          return {
-            value: d.planId,
-            name: d.planName,
-          };
-        });
+        this.companies = v.data;
       },
     });
   }
