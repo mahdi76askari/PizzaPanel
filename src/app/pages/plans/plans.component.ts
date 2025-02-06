@@ -35,17 +35,4 @@ export class PlansComponent implements OnInit {
       },
     });
   }
-
-  add() {
-    this.dialog
-      .open(AddPlanComponent)
-      .afterClosed()
-      .subscribe({
-        next: (v: any) => {
-          this.getPlans();
-        },
-      });
-  }
-
-  edit() {}
 }

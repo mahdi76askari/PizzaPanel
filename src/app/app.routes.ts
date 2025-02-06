@@ -91,6 +91,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'plans/edit/:plan',
+        loadComponent: () =>
+          import('./pages/plans/add-plan/add-plan.component').then(
+            (c) => c.AddPlanComponent
+          ),
+      },
+      {
         path: 'users',
         loadComponent: () =>
           import('./pages/users/users.component').then((c) => c.UsersComponent),

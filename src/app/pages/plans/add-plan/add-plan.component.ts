@@ -5,7 +5,8 @@ import { SelectComponent } from '../../../components/elements/forms/select/selec
 import nmp_mapboxgl from '@neshan-maps-platform/mapbox-gl';
 import MapboxDraw from '@mapbox/mapbox-gl-draw';
 import { ButtonComponent } from '../../../components/elements/button/button/button.component';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { PlansService } from '../../../services/http/plans.service';
 
 @Component({
   selector: 'app-add-plan',
@@ -23,16 +24,78 @@ export class AddPlanComponent implements OnInit {
     guaranteeReturnTimeFull: new FormControl(),
     planPrice: new FormControl(),
     durationInMonths: new FormControl(),
+    productPriceLevel: new FormControl(),
+    isActive: new FormControl(),
+    allowsFloatingAddress: new FormControl(),
+    allowedAddressChanges: new FormControl(),
   });
 
   map: any;
   draw: any;
   lng = 51.66794973002524;
   lat = 32.64609688642658;
-  constructor() {}
+
+  userLevels = [
+    {
+      name: 'سطح اول',
+      value: '1',
+    },
+    {
+      name: 'سطح دوم',
+      value: '2',
+    },
+    {
+      name: 'سطح سوم',
+      value: '3',
+    },
+    {
+      name: 'سطح چهارم',
+      value: '4',
+    },
+  ];
+
+  addresschangeOptions = [
+    {
+      name: 'اجازه دارد',
+      value: 'true',
+    },
+    {
+      name: 'اجازه ندارد ',
+      value: 'false',
+    },
+  ];
+
+  constructor(
+    private route: ActivatedRoute,
+    private plansService: PlansService
+  ) {}
 
   ngOnInit() {
+    this.route.params.subscribe({
+      next: (v: any) => {
+        if (v.plan) {
+          this.getPlan(v.plan);
+        }
+      },
+    });
+
     this.mapInit();
+  }
+
+  getPlan(param: any) {
+    this.plansService.getPlan(param).subscribe({
+      next: (v: any) => {
+        this.form.patchValue({
+          deliveryFee: v.data.deliveryFee,
+          durationInMonths: v.data.durationInMonths,
+          guaranteeReturnTimeFull: v.data.guaranteeReturnTimeFull,
+          guaranteeReturnTimeHalf: v.data.guaranteeReturnTimeHalf,
+          planName: v.data.planName,
+          planPrice: v.data.planPrice,
+          selectedAreaPolygon: v.data.selectedAreaPolygon,
+        });
+      },
+    });
   }
 
   save() {

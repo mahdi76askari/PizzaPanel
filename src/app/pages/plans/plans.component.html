@@ -13,22 +13,22 @@
       <div class="text-green-700">فعال</div>
     </div>
     <div>
-      <p>هزینه : {{ plan.planPrice | toman }}</p>
+      <p>هزینه : {{ plan.planPrice | toman }} تومان</p>
     </div>
     <div>
       <p>سطح کاربر : {{ plan.productPriceLevel }}</p>
     </div>
     <div class="flex justify-between my-2">
-      <div>گارانتی نصف قیمت: {{ plan.guaranteeReturnTimeHalf }}</div>
+      <div>گارانتی نصف قیمت: {{ plan.guaranteeReturnTimeHalf }} دقیقه</div>
     </div>
     <div class="flex justify-between my-2">
-      <div>گارانتی رایگان : {{ plan.guaranteeReturnTimeFull }}</div>
+      <div>گارانتی رایگان : {{ plan.guaranteeReturnTimeFull }} دقیقه</div>
     </div>
     <div class="flex justify-between my-2">
       <div>مدت : {{ plan.durationInMonths }}</div>
     </div>
     <div class="flex justify-between my-2">
-      <div>هزینه ارسال : {{ plan.deliveryFee }}</div>
+      <div>هزینه ارسال : {{ plan.deliveryFee | toman }} تومان</div>
     </div>
 
     <div class="flex justify-between my-2">
@@ -46,7 +46,7 @@
     </div>
 
     <div class="flex justify-between my-2">
-      <a-button (click)="edit()"> ویرایش</a-button>
+      <a-button [routerLink]="['/plans/edit/' + plan.planId]"> ویرایش</a-button>
     </div>
   </div>
   }

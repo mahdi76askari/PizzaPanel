@@ -8,6 +8,7 @@ import { DecimalFormatService } from '../services/tools/decimal.service';
 export class TomanPipe implements PipeTransform {
   constructor(private decimalFormatService: DecimalFormatService) {}
   transform(value: any, args?: any): any {
+    value = Number(value) / 10;
     if (value > 0) {
       return this.decimalFormatService.format(value, '3.');
     } else {

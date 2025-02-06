@@ -105,8 +105,8 @@ export class NewUserComponent implements OnInit {
       next: (v: any) => {
         this.companies = v.data.map((d: any) => {
           return {
-            value: d.planId,
-            name: d.planName,
+            value: d.companyId,
+            name: d.name,
           };
         });
       },

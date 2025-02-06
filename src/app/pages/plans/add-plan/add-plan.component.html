@@ -4,40 +4,52 @@
       <div>
         <div>
           <span>عنوان</span>
-          <a-input-text></a-input-text>
+          <a-input-text [(fc)]="form.controls.planName"></a-input-text>
         </div>
         <div>
           <span>هزینه طرح</span>
-          <a-input-text></a-input-text>
+          <a-input-text [(fc)]="form.controls.planPrice"></a-input-text>
         </div>
         <div>
           <span>مدت (ماه) </span>
-          <a-input-text></a-input-text>
+          <a-input-text [(fc)]="form.controls.durationInMonths"></a-input-text>
         </div>
         <div>
           <span>هزینه ارسال</span>
-          <a-input-text></a-input-text>
+          <a-input-text [(fc)]="form.controls.deliveryFee"></a-input-text>
         </div>
         <div>
           <span>مدت گارانتی 50 درصد رایگان</span>
-          <a-input-text></a-input-text>
+          <a-input-text
+            [(fc)]="form.controls.guaranteeReturnTimeHalf"
+          ></a-input-text>
         </div>
         <div>
           <span>مدت گارانتی 100 درصد رایگان</span>
-          <a-input-text></a-input-text>
+          <a-input-text
+            [(fc)]="form.controls.guaranteeReturnTimeFull"
+          ></a-input-text>
         </div>
         <div>
           <span>اجازه تغییر آدرس </span>
 
-          <a-select></a-select>
+          <a-select
+            [(fc)]="form.controls.allowsFloatingAddress"
+            [options]="addresschangeOptions"
+          ></a-select>
         </div>
         <div>
           <span>دفعات مجاز تغییر آدرس</span>
-          <a-input-text></a-input-text>
+          <a-input-text
+            [(fc)]="form.controls.allowedAddressChanges"
+          ></a-input-text>
         </div>
         <div>
           <span>سطح کاربری</span>
-          <a-select></a-select>
+          <a-select
+            [(fc)]="form.controls.productPriceLevel"
+            [options]="userLevels"
+          ></a-select>
         </div>
         <div class="flex items-center justify-between">
           <a-button (click)="save()">ذخیره</a-button>
