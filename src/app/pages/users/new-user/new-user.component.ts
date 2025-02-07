@@ -7,8 +7,7 @@ import { FormControl, FormsModule } from '@angular/forms';
 import { PlansService } from '../../../services/http/plans.service';
 import { CompanyService } from '../../../services/http/company.service';
 import { AlertService } from '../../../services/tools/alert.service';
-import { DialogRef } from '@angular/cdk/dialog';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-new-user',
@@ -45,6 +44,9 @@ export class NewUserComponent implements OnInit {
   ];
 
   dialogRef = inject(MatDialogRef<NewUserComponent>);
+  readonly data = inject(MAT_DIALOG_DATA);
+
+  mode: string = 'add';
 
   constructor(
     private adminService: AdminService,
@@ -56,6 +58,16 @@ export class NewUserComponent implements OnInit {
   ngOnInit() {
     this.getPlans();
     this.getCompanies();
+
+    if (this.data && this.data.user) {
+      this.mode = 'edit';
+      this.patchData();
+    }
+  }
+
+  patchData() {
+    this.firstNameAndLastName.patchValue(this.data.user.firstNameAndLastName);
+    this.phoneNumber.patchValue(this.data.user.phoneNumber);
   }
 
   save() {

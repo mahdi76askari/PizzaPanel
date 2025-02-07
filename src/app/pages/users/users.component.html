@@ -57,7 +57,11 @@
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef>عملیات</th>
       <td mat-cell *matCellDef="let transaction">
-        <a-button>عملیات</a-button>
+        <a-button
+          (click)="edit(transaction)"
+          routerLinkActive="router-link-active"
+          >ویرایش</a-button
+        >
       </td>
     </ng-container>
 

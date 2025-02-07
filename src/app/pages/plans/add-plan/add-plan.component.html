@@ -7,6 +7,10 @@
           <a-input-text [(fc)]="form.controls.planName"></a-input-text>
         </div>
         <div>
+          <span>کد</span>
+          <a-input-text [(fc)]="form.controls.code"></a-input-text>
+        </div>
+        <div>
           <span>هزینه طرح</span>
           <a-input-text [(fc)]="form.controls.planPrice"></a-input-text>
         </div>
@@ -51,7 +55,7 @@
             [options]="userLevels"
           ></a-select>
         </div>
-        <div class="flex items-center justify-between">
+        <div class="flex items-center justify-between mt-2">
           <a-button (click)="save()">ذخیره</a-button>
           <a-button [routerLink]="['/plans']">بازگشت</a-button>
         </div>

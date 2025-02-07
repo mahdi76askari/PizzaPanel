@@ -7,6 +7,7 @@ import MapboxDraw from '@mapbox/mapbox-gl-draw';
 import { ButtonComponent } from '../../../components/elements/button/button/button.component';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { PlansService } from '../../../services/http/plans.service';
+import { AlertService } from '../../../services/tools/alert.service';
 
 @Component({
   selector: 'app-add-plan',
@@ -18,6 +19,7 @@ import { PlansService } from '../../../services/http/plans.service';
 export class AddPlanComponent implements OnInit {
   form = new FormGroup({
     planName: new FormControl(),
+    code: new FormControl(),
     selectedAreaPolygon: new FormControl(),
     deliveryFee: new FormControl(),
     guaranteeReturnTimeHalf: new FormControl(),
@@ -65,9 +67,13 @@ export class AddPlanComponent implements OnInit {
     },
   ];
 
+  mode: string = 'add';
+  planId: any = 0;
+
   constructor(
     private route: ActivatedRoute,
-    private plansService: PlansService
+    private plansService: PlansService,
+    private alertService: AlertService
   ) {}
 
   ngOnInit() {
@@ -75,6 +81,8 @@ export class AddPlanComponent implements OnInit {
       next: (v: any) => {
         if (v.plan) {
           this.getPlan(v.plan);
+          this.mode = 'edit';
+          this.planId = v.plan;
         }
       },
     });
@@ -87,6 +95,7 @@ export class AddPlanComponent implements OnInit {
       next: (v: any) => {
         this.form.patchValue({
           deliveryFee: v.data.deliveryFee,
+          code: v.data.code,
           durationInMonths: v.data.durationInMonths,
           guaranteeReturnTimeFull: v.data.guaranteeReturnTimeFull,
           guaranteeReturnTimeHalf: v.data.guaranteeReturnTimeHalf,
@@ -100,6 +109,31 @@ export class AddPlanComponent implements OnInit {
 
   save() {
     console.log(this.draw.getAll());
+
+    const body = {
+      deliveryFee: this.form.controls.deliveryFee.value,
+      code: this.form.controls.code.value,
+      durationInMonths: this.form.controls.durationInMonths.value,
+      guaranteeReturnTimeFull: this.form.controls.guaranteeReturnTimeFull.value,
+      guaranteeReturnTimeHalf: this.form.controls.guaranteeReturnTimeHalf.value,
+      planName: this.form.controls.planName.value,
+      planPrice: this.form.controls.planPrice.value,
+      selectedAreaPolygon: this.form.controls.selectedAreaPolygon.value,
+    };
+
+    if (this.mode == 'edit') {
+      this.plansService.updatePlan(this.planId, body).subscribe({
+        next: (v: any) => {
+          this.alertService.success({ title: 'پلن ویرایش شد', msg: '' });
+        },
+      });
+    } else {
+      this.plansService.newPlan(body).subscribe({
+        next: (v: any) => {
+          this.alertService.success({ title: 'پلن اضافه شد', msg: '' });
+        },
+      });
+    }
   }
 
   mapInit() {

@@ -23,7 +23,13 @@
           <a-select [options]="plans" [(fc)]="planId"></a-select>
         </div>
         <div class="mt-3 flex justify-between">
-          <a-button (click)="save()">ذخیره</a-button>
+          @if (mode == 'edit') {
+          <a-button (click)="save()">ذخیره تغییرات</a-button>
+
+          }@else {
+          <a-button (click)="save()">افزودن</a-button>
+
+          }
           <a-button (click)="cancel()">انصراف</a-button>
         </div>
       </div>

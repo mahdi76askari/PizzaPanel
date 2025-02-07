@@ -60,8 +60,6 @@ export class UsersComponent {
   }
 
   getUsers() {
-    console.log(this.pageNumber);
-
     this.loading = true;
     let param = `?pageSize=${this.pageSize}&pageNumber=${this.pageNumber}`;
 
@@ -85,6 +83,17 @@ export class UsersComponent {
   addUser() {
     this.dialog
       .open(NewUserComponent)
+      .afterClosed()
+      .subscribe({
+        next: (v: any) => {
+          this.getUsers();
+        },
+      });
+  }
+
+  edit(user: any) {
+    this.dialog
+      .open(NewUserComponent, { data: { user: user } })
       .afterClosed()
       .subscribe({
         next: (v: any) => {
