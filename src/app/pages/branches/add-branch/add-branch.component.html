@@ -1,6 +1,6 @@
 <div class="p-6">
-  <div class="flex">
-    <div class="ml-2">
+  <div class="flex flex-wrap">
+    <div class="ml-2 flex">
       <div>
         <div>
           <span>عنوان</span>
@@ -18,8 +18,6 @@
           <span>واحد</span>
           <a-input-text [(fc)]="form.controls.unit"></a-input-text>
         </div>
-      </div>
-      <div>
         <div>
           <span>انتخاب مدیر</span>
 
@@ -28,6 +26,9 @@
             [options]="users"
           ></a-select>
         </div>
+      </div>
+      <div class="mt-4 w-[600px]">
+        <div id="map" class="w-full h-[600px]"></div>
       </div>
     </div>
     <div>

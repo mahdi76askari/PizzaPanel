@@ -37,6 +37,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'branches/add',
+        loadComponent: () =>
+          import('./pages/branches/add-branch/add-branch.component').then(
+            (c) => c.AddBranchComponent
+          ),
+      },
+      {
         path: 'orders',
         loadComponent: () =>
           import('./pages/orders/orders.component').then(

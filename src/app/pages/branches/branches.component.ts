@@ -4,11 +4,12 @@ import { BranchService } from '../../services/http/branch.service';
 import { DialogModule } from '@angular/cdk/dialog';
 import { MatDialog } from '@angular/material/dialog';
 import { AddBranchComponent } from './add-branch/add-branch.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-branches',
   standalone: true,
-  imports: [ButtonComponent],
+  imports: [ButtonComponent, RouterModule],
   templateUrl: './branches.component.html',
   styleUrl: './branches.component.scss',
 })
@@ -43,13 +44,13 @@ export class BranchesComponent {
   }
 
   addBranch() {
-    this.dialog
-      .open(AddBranchComponent)
-      .afterClosed()
-      .subscribe({
-        next: (v: any) => {
-          this.getBranches();
-        },
-      });
+    // this.dialog
+    //   .open(AddBranchComponent)
+    //   .afterClosed()
+    //   .subscribe({
+    //     next: (v: any) => {
+    //       this.getBranches();
+    //     },
+    //   });
   }
 }
