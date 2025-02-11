@@ -12,15 +12,15 @@ import { AdminService } from '../../services/http/admin.service';
 })
 export class DashboardComponent {
   reportSummery: IReportSummery[] = [
-    { title: 'سفارش ها', amount: 200, change: 20, icon: 'pi-cart-arrow-down' },
-    { title: 'جمع پرداختی', amount: 200, change: -20, icon: 'pi-dollar' },
+    { title: 'سفارش ها', amount: 0, change: 0, icon: 'pi-cart-arrow-down' },
+    { title: 'جمع پرداختی', amount: 0, change: 0, icon: 'pi-dollar' },
     {
       title: 'سفارش لغو شده',
-      amount: 200,
-      change: 20,
+      amount: 0,
+      change: 0,
       icon: 'pi-shopping-cart',
     },
-    { title: 'شعب فعال', amount: 30, change: 0, icon: 'pi-building-columns' },
+    { title: 'شعب فعال', amount: 0, change: 0, icon: 'pi-building-columns' },
   ];
 
   constructor(private adminService: AdminService) {}

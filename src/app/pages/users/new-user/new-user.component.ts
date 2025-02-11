@@ -68,6 +68,8 @@ export class NewUserComponent implements OnInit {
   patchData() {
     this.firstNameAndLastName.patchValue(this.data.user.firstNameAndLastName);
     this.phoneNumber.patchValue(this.data.user.phoneNumber);
+    this.planId.patchValue(this.data.user.planId);
+    this.companyId.patchValue(this.data.user.companyId);
   }
 
   save() {

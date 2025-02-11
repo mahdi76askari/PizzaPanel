@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { AddCompanyComponent } from './add-company/add-company.component';
+import { RemoveCompanyComponent } from './remove-company/remove-company.component';
 
 @Component({
   selector: 'app-company',
@@ -33,10 +34,14 @@ export class CompanyComponent implements OnInit {
   }
 
   getCompanies() {
-    const param = '';
+    let param = `?pageSize=${this.pageSize}&pageNumber=${this.pageNumber}`;
     this.companyService.getCompanies(param).subscribe({
       next: (v: any) => {
         this.companies = v.data;
+        this.total = v.meta.total;
+        this.pageSize = v.meta.pageSize;
+        this.pageNumber = v.meta.pageNumber;
+        this.loading = false;
       },
     });
   }
@@ -50,6 +55,28 @@ export class CompanyComponent implements OnInit {
   add() {
     this.dialog
       .open(AddCompanyComponent)
+      .afterClosed()
+      .subscribe({
+        next: (v: any) => {
+          this.getCompanies();
+        },
+      });
+  }
+
+  edit(user: any) {
+    this.dialog
+      .open(AddCompanyComponent, { data: { company: user } })
+      .afterClosed()
+      .subscribe({
+        next: (v: any) => {
+          this.getCompanies();
+        },
+      });
+  }
+
+  remove(id: any) {
+    this.dialog
+      .open(RemoveCompanyComponent, { data: { companyId: id } })
       .afterClosed()
       .subscribe({
         next: (v: any) => {

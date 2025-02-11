@@ -20,7 +20,6 @@ export class AddPlanComponent implements OnInit {
   form = new FormGroup({
     planName: new FormControl(),
     code: new FormControl(),
-    selectedAreaPolygon: new FormControl(),
     deliveryFee: new FormControl(),
     guaranteeReturnTimeHalf: new FormControl(),
     guaranteeReturnTimeFull: new FormControl(),
@@ -101,7 +100,6 @@ export class AddPlanComponent implements OnInit {
           guaranteeReturnTimeHalf: v.data.guaranteeReturnTimeHalf,
           planName: v.data.planName,
           planPrice: v.data.planPrice,
-          selectedAreaPolygon: v.data.selectedAreaPolygon,
         });
       },
     });
@@ -118,7 +116,7 @@ export class AddPlanComponent implements OnInit {
       guaranteeReturnTimeHalf: this.form.controls.guaranteeReturnTimeHalf.value,
       planName: this.form.controls.planName.value,
       planPrice: this.form.controls.planPrice.value,
-      selectedAreaPolygon: this.form.controls.selectedAreaPolygon.value,
+      selectedAreaPolygon: '', //this.draw.getAll().features[0].geometry.coordinates[0],
     };
 
     if (this.mode == 'edit') {

@@ -3,7 +3,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 interface options {
   name: string;
-  value: string;
+  value: any;
 }
 @Component({
   selector: 'a-select',

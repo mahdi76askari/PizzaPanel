@@ -16,7 +16,9 @@
     }
 
     <div class="mt-2">
-      <a-button type="primary" (click)="login()">ورود</a-button>
+      <a-button type="primary" [disabled]="!loading" (click)="login()"
+        >ورود</a-button
+      >
     </div>
   </div>
 </div>

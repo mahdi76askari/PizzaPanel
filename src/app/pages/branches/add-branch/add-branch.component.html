@@ -4,26 +4,29 @@
       <div>
         <div>
           <span>عنوان</span>
-          <a-input-text></a-input-text>
+          <a-input-text [(fc)]="form.controls.caption"></a-input-text>
         </div>
         <div>
           <span>آدرس</span>
-          <a-input-text></a-input-text>
+          <a-input-text [(fc)]="form.controls.addressDetail"></a-input-text>
         </div>
         <div>
           <span>پلاک</span>
-          <a-input-text></a-input-text>
+          <a-input-text [(fc)]="form.controls.plaque"></a-input-text>
         </div>
         <div>
           <span>واحد</span>
-          <a-input-text></a-input-text>
+          <a-input-text [(fc)]="form.controls.unit"></a-input-text>
         </div>
       </div>
       <div>
         <div>
           <span>انتخاب مدیر</span>
 
-          <a-select></a-select>
+          <a-select
+            [(fc)]="form.controls.mangerUserId"
+            [options]="users"
+          ></a-select>
         </div>
       </div>
     </div>
