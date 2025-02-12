@@ -50,77 +50,80 @@
         <div class="flex items-center my-2">
           <app-time-range
             [title]="'صبح یکشنبه'"
-            [(from)]="saturdayMorningFrom"
-            [(to)]="saturdayMorningTo"
+            [(from)]="sundayMorningFrom"
+            [(to)]="sundayMorningTo"
           ></app-time-range>
           <app-time-range
             [title]="'عصر یکشنبه'"
-            [(from)]="saturdayMorningFrom"
-            [(to)]="saturdayMorningTo"
+            [(from)]="sundayMorningFrom"
+            [(to)]="sundayMorningTo"
           ></app-time-range>
         </div>
         <div class="flex items-center my-2">
           <app-time-range
             [title]="'صبح دوشنبه'"
-            [(from)]="saturdayMorningFrom"
-            [(to)]="saturdayMorningTo"
+            [(from)]="mondayMorningFrom"
+            [(to)]="mondayMorningTo"
           ></app-time-range>
           <app-time-range
             [title]="'عصر دوشنبه'"
-            [(from)]="saturdayMorningFrom"
-            [(to)]="saturdayMorningTo"
+            [(from)]="mondayMorningFrom"
+            [(to)]="mondayMorningTo"
           ></app-time-range>
         </div>
         <div class="flex items-center my-2">
           <app-time-range
             [title]="'صبح سه شنبه'"
-            [(from)]="saturdayMorningFrom"
-            [(to)]="saturdayMorningTo"
+            [(from)]="tuesdayMorningFrom"
+            [(to)]="tuesdayMorningTo"
           ></app-time-range>
           <app-time-range
             [title]="'عصر سه شنبه'"
-            [(from)]="saturdayMorningFrom"
-            [(to)]="saturdayMorningTo"
+            [(from)]="tuesdayMorningFrom"
+            [(to)]="tuesdayMorningTo"
           ></app-time-range>
         </div>
         <div class="flex items-center my-2">
           <app-time-range
             [title]="'صبح چهارشنبه'"
-            [(from)]="saturdayMorningFrom"
-            [(to)]="saturdayMorningTo"
+            [(from)]="wednesdayMorningFrom"
+            [(to)]="wednesdayMorningTo"
           ></app-time-range>
           <app-time-range
             [title]="'عصر چهارشنبه'"
-            [(from)]="saturdayMorningFrom"
-            [(to)]="saturdayMorningTo"
+            [(from)]="wednesdayMorningFrom"
+            [(to)]="wednesdayMorningTo"
           ></app-time-range>
         </div>
 
         <div class="flex items-center my-2">
           <app-time-range
             [title]="'صبح پنجشنبه'"
-            [(from)]="saturdayMorningFrom"
-            [(to)]="saturdayMorningTo"
+            [(from)]="thursdayMorningFrom"
+            [(to)]="thursdayMorningTo"
           ></app-time-range>
           <app-time-range
             [title]="'عصر پنجشنبه'"
-            [(from)]="saturdayMorningFrom"
-            [(to)]="saturdayMorningTo"
+            [(from)]="thursdayMorningFrom"
+            [(to)]="thursdayMorningTo"
           ></app-time-range>
         </div>
         <div class="flex items-center my-2">
           <app-time-range
             [title]="'صبح جمعه'"
-            [(from)]="saturdayMorningFrom"
-            [(to)]="saturdayMorningTo"
+            [(from)]="fridayMorningFrom"
+            [(to)]="fridayMorningTo"
           ></app-time-range>
           <app-time-range
             [title]="'عصر جمعه'"
-            [(from)]="saturdayMorningFrom"
-            [(to)]="saturdayMorningTo"
+            [(from)]="fridayMorningFrom"
+            [(to)]="fridayMorningTo"
           ></app-time-range>
         </div>
       </div>
     </div>
+  </div>
+  <div>
+    <a-button (click)="save()">ذخیره</a-button>
   </div>
 </div>

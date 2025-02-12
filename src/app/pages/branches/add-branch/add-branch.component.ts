@@ -13,6 +13,7 @@ import nmp_mapboxgl from '@neshan-maps-platform/mapbox-gl';
 import { BranchManagerService } from '../../../services/http/branchManager.service';
 import { BranchService } from '../../../services/http/branch.service';
 import { AlertService } from '../../../services/tools/alert.service';
+import { ButtonComponent } from '../../../components/elements/button/button/button.component';
 
 @Component({
   selector: 'app-add-branch',
@@ -25,42 +26,43 @@ import { AlertService } from '../../../services/tools/alert.service';
     FormsModule,
     ReactiveFormsModule,
     TimeRangeComponent,
+    ButtonComponent,
   ],
 })
 export class AddBranchComponent implements OnInit, AfterViewInit {
-  saturdayMorningFrom = '09:00';
-  saturdayMorningTo = '12:00';
-  saturdayEveningFrom = '16:00';
+  saturdayMorningFrom = '10:00';
+  saturdayMorningTo = '14:00';
+  saturdayEveningFrom = '19:00';
   saturdayEveningTo = '23:00';
   // sunday
-  sundayMorningFrom = '09:00';
-  sundayMorningTo = '12:00';
-  sundayEveningFrom = '16:00';
+  sundayMorningFrom = '10:00';
+  sundayMorningTo = '14:00';
+  sundayEveningFrom = '19:00';
   sundayEveningTo = '23:00';
   // monday
-  mondayMorningFrom = '09:00';
-  mondayMorningTo = '12:00';
-  mondayEveningFrom = '16:00';
+  mondayMorningFrom = '10:00';
+  mondayMorningTo = '14:00';
+  mondayEveningFrom = '19:00';
   mondayEveningTo = '23:00';
   // tuesday
-  tuesdayMorningFrom = '09:00';
-  tuesdayMorningTo = '12:00';
-  tuesdayEveningFrom = '16:00';
+  tuesdayMorningFrom = '10:00';
+  tuesdayMorningTo = '14:00';
+  tuesdayEveningFrom = '19:00';
   tuesdayEveningTo = '23:00';
   //wednesday
-  wednesdayMorningFrom = '09:00';
-  wednesdayMorningTo = '12:00';
-  wednesdayEveningFrom = '16:00';
+  wednesdayMorningFrom = '10:00';
+  wednesdayMorningTo = '14:00';
+  wednesdayEveningFrom = '19:00';
   wednesdayEveningTo = '23:00';
   // thursday
-  thursdayMorningFrom = '09:00';
-  thursdayMorningTo = '12:00';
-  thursdayEveningFrom = '16:00';
+  thursdayMorningFrom = '10:00';
+  thursdayMorningTo = '14:00';
+  thursdayEveningFrom = '19:00';
   thursdayEveningTo = '23:00';
   //friday
-  fridayMorningFrom = '09:00';
-  fridayMorningTo = '12:00';
-  fridayEveningFrom = '16:00';
+  fridayMorningFrom = '10:00';
+  fridayMorningTo = '14:00';
+  fridayEveningFrom = '19:00';
   fridayEveningTo = '23:00';
 
   form = new FormGroup({
@@ -143,14 +145,14 @@ export class AddBranchComponent implements OnInit, AfterViewInit {
   save() {
     const body = {
       address: {
-        caption: this.form.controls.caption,
-        addressDetail: this.form.controls.addressDetail,
-        plaque: this.form.controls.plaque,
-        unit: this.form.controls.unit,
+        caption: this.form.controls.caption.value,
+        addressDetail: this.form.controls.addressDetail.value,
+        plaque: this.form.controls.plaque.value,
+        unit: this.form.controls.unit.value,
         latitude: this.lat,
         longitude: this.lng,
       },
-      mangerUserId: this.form.controls.mangerUserId,
+      mangerUserId: this.form.controls.mangerUserId.value,
       workingHours: [
         {
           dayOfWeek: 0,
@@ -161,45 +163,45 @@ export class AddBranchComponent implements OnInit, AfterViewInit {
         },
         {
           dayOfWeek: 1,
-          morningOpeningTime: this.saturdayMorningFrom,
-          morningClosingTime: this.saturdayMorningTo,
-          eveningOpeningTime: this.saturdayEveningFrom,
-          eveningClosingTime: this.saturdayEveningTo,
+          morningOpeningTime: this.sundayMorningFrom,
+          morningClosingTime: this.sundayMorningTo,
+          eveningOpeningTime: this.sundayEveningFrom,
+          eveningClosingTime: this.sundayEveningTo,
         },
         {
           dayOfWeek: 2,
-          morningOpeningTime: this.saturdayMorningFrom,
-          morningClosingTime: this.saturdayMorningTo,
-          eveningOpeningTime: this.saturdayEveningFrom,
-          eveningClosingTime: this.saturdayEveningTo,
+          morningOpeningTime: this.mondayMorningFrom,
+          morningClosingTime: this.mondayMorningTo,
+          eveningOpeningTime: this.mondayEveningFrom,
+          eveningClosingTime: this.mondayEveningTo,
         },
         {
           dayOfWeek: 3,
-          morningOpeningTime: this.saturdayMorningFrom,
-          morningClosingTime: this.saturdayMorningTo,
-          eveningOpeningTime: this.saturdayEveningFrom,
-          eveningClosingTime: this.saturdayEveningTo,
+          morningOpeningTime: this.tuesdayMorningFrom,
+          morningClosingTime: this.tuesdayMorningTo,
+          eveningOpeningTime: this.tuesdayEveningFrom,
+          eveningClosingTime: this.tuesdayEveningTo,
         },
         {
           dayOfWeek: 4,
-          morningOpeningTime: this.saturdayMorningFrom,
-          morningClosingTime: this.saturdayMorningTo,
-          eveningOpeningTime: this.saturdayEveningFrom,
-          eveningClosingTime: this.saturdayEveningTo,
+          morningOpeningTime: this.wednesdayMorningFrom,
+          morningClosingTime: this.wednesdayMorningTo,
+          eveningOpeningTime: this.wednesdayEveningFrom,
+          eveningClosingTime: this.wednesdayEveningTo,
         },
         {
           dayOfWeek: 5,
-          morningOpeningTime: this.saturdayMorningFrom,
-          morningClosingTime: this.saturdayMorningTo,
-          eveningOpeningTime: this.saturdayEveningFrom,
-          eveningClosingTime: this.saturdayEveningTo,
+          morningOpeningTime: this.thursdayMorningFrom,
+          morningClosingTime: this.thursdayMorningTo,
+          eveningOpeningTime: this.thursdayEveningFrom,
+          eveningClosingTime: this.thursdayEveningTo,
         },
         {
           dayOfWeek: 6,
-          morningOpeningTime: this.saturdayMorningFrom,
-          morningClosingTime: this.saturdayMorningTo,
-          eveningOpeningTime: this.saturdayEveningFrom,
-          eveningClosingTime: this.saturdayEveningTo,
+          morningOpeningTime: this.fridayMorningFrom,
+          morningClosingTime: this.fridayMorningTo,
+          eveningOpeningTime: this.fridayEveningFrom,
+          eveningClosingTime: this.fridayEveningTo,
         },
       ],
     };

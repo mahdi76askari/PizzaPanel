@@ -14,6 +14,12 @@ export class BranchService {
   }
 
   newBranch(body: any) {
-    return this.motherService.post(this.api + '/verify-otp', body);
+    return this.motherService.post(this.api, body);
+  }
+  updateBranch(param: any, body: any) {
+    return this.motherService.put(this.api + '/' + param, body);
+  }
+  deleteBranch(param: any) {
+    return this.motherService.delete(this.api + '/' + param);
   }
 }
