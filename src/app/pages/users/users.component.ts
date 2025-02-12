@@ -7,6 +7,7 @@ import { TomanPipe } from '../../pipes/toman.pipe';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { NewUserComponent } from './new-user/new-user.component';
+import { EditRoleComponent } from './edit-role/edit-role.component';
 interface Users {
   id: string;
   name: string;
@@ -94,6 +95,17 @@ export class UsersComponent {
   edit(user: any) {
     this.dialog
       .open(NewUserComponent, { data: { user: user } })
+      .afterClosed()
+      .subscribe({
+        next: (v: any) => {
+          this.getUsers();
+        },
+      });
+  }
+
+  editRole(user: any) {
+    this.dialog
+      .open(EditRoleComponent, { data: { user: user } })
       .afterClosed()
       .subscribe({
         next: (v: any) => {

@@ -26,4 +26,10 @@ export class AdminService {
   newUser(body: any) {
     return this.motherService.post(this.api + '/create-user-by-admin', body);
   }
+  updateUser(body: any) {
+    return this.motherService.put(this.api + '/update-user-by-admin', body);
+  }
+  assignRole(body: any) {
+    return this.motherService.post(this.api + '/assign-role', body);
+  }
 }

@@ -5,6 +5,7 @@ import { DialogModule } from '@angular/cdk/dialog';
 import { MatDialog } from '@angular/material/dialog';
 import { AddBranchComponent } from './add-branch/add-branch.component';
 import { RouterModule } from '@angular/router';
+import { RemoveBranchComponent } from './remove-branch/remove-branch.component';
 
 @Component({
   selector: 'app-branches',
@@ -43,14 +44,18 @@ export class BranchesComponent {
     });
   }
 
-  addBranch() {
-    // this.dialog
-    //   .open(AddBranchComponent)
-    //   .afterClosed()
-    //   .subscribe({
-    //     next: (v: any) => {
-    //       this.getBranches();
-    //     },
-    //   });
+  remove(branch: any) {
+    this.dialog
+      .open(RemoveBranchComponent, {
+        data: {
+          branch: branch,
+        },
+      })
+      .afterClosed()
+      .subscribe({
+        next: (v: any) => {
+          this.getBranches();
+        },
+      });
   }
 }

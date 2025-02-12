@@ -86,17 +86,32 @@ export class NewUserComponent implements OnInit {
       body.planId = this.planId.value;
     }
 
-    this.adminService.newUser(body).subscribe({
-      next: (v: any) => {
-        this.companyId.reset();
-        this.planId.reset();
-        this.phoneNumber.reset();
-        this.firstNameAndLastName.reset();
-        this.roleId.reset();
+    if (this.mode === 'add') {
+      this.adminService.newUser(body).subscribe({
+        next: (v: any) => {
+          this.companyId.reset();
+          this.planId.reset();
+          this.phoneNumber.reset();
+          this.firstNameAndLastName.reset();
+          this.roleId.reset();
 
-        this.alertService.success({ title: 'کاربر جدید اضافه شد', msg: '' });
-      },
-    });
+          this.alertService.success({ title: 'کاربر جدید اضافه شد', msg: '' });
+        },
+      });
+    } else {
+      body.userId = this.data.user.userId;
+      this.adminService.updateUser(body).subscribe({
+        next: (v: any) => {
+          this.companyId.reset();
+          this.planId.reset();
+          this.phoneNumber.reset();
+          this.firstNameAndLastName.reset();
+          this.roleId.reset();
+
+          this.alertService.success({ title: 'کاربر  ویرایش شد', msg: '' });
+        },
+      });
+    }
   }
 
   getPlans() {

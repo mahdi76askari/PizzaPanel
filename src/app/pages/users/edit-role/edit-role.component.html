@@ -1,0 +1,13 @@
+<div class="p-10">
+  <p>
+    شما در حال تغییر نقش کاربر به نام
+    {{ data.user.firstNameAndLastName }} هستید.
+  </p>
+  <div>
+    <span> نقش کاربری</span>
+    <a-select [options]="rols" [(fc)]="roleId"></a-select>
+  </div>
+  <div>
+    <a-button (click)="change()">تغییر نقش</a-button>
+  </div>
+</div>
