@@ -1,0 +1,34 @@
+<div class="">
+  <div>
+    <a-title>اطلاعات اشتراک</a-title>
+    @if (data.userPlanName) {
+    <div class="max-w-md">
+      <div class="flex justify-between items-center my-2">
+        <span>نام طرح فعلی</span>
+        <span>{{ data.userPlanName }}</span>
+      </div>
+      <div class="flex justify-between items-center my-2">
+        <span>تاریخ شروع </span>
+        <span>{{ data.planActivationDateShamsi }}</span>
+      </div>
+      <div class="flex justify-between items-center my-2">
+        <span>تاریخ پایان</span>
+
+        <span>{{ data.planExpirationDateShamsi }}</span>
+      </div>
+    </div>
+    }@else {
+    <div>
+      <p class="p-2">
+        در حال حاضر پلن فعال ندارید. برای ادامه نسبت به خرید اشتراک اقدام کنید
+      </p>
+    </div>
+    }
+
+    <div>
+      <a-button mode="success" [routerLink]="['/plans/buy']">
+        خرید اشتراک</a-button
+      >
+    </div>
+  </div>
+</div>

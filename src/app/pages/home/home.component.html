@@ -1,0 +1,13 @@
+<div class="p-2 mx-2">
+  <div class="flex justify-between">
+    <div class="w-full md:w-auto">
+      <app-categories [categories]="categories"></app-categories>
+      @for (cat of categories; track $index) {
+      <app-grid [title]="cat.name" [groupId]="cat.productGroupId"></app-grid>
+      }
+    </div>
+    <div class="hidden md:block">
+      <app-basket-card mode="checkout"></app-basket-card>
+    </div>
+  </div>
+</div>

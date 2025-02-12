@@ -1,0 +1,18 @@
+<div dir="ltr">
+  <div class="ngx-timepicker-field-example">
+    <ngx-timepicker-field
+      [minutesGap]="15"
+      [format]="24"
+      [formControl]="fc"
+      [cancelBtnTmpl]="cancelBtn"
+      [confirmBtnTmpl]="confirmBtn"
+    >
+    </ngx-timepicker-field>
+    <ng-template #cancelBtn>
+      <a-button>لغو</a-button>
+    </ng-template>
+    <ng-template #confirmBtn>
+      <a-button>تایید</a-button>
+    </ng-template>
+  </div>
+</div>

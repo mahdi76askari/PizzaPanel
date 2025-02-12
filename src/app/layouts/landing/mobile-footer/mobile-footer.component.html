@@ -1,0 +1,29 @@
+<div
+  class="fixed bottom-0 flex md:hidden w-full bg-gray-100 justify-between items-center py-2 px-4 pb-1"
+>
+  <div (click)="homeNavigate()">
+    <img src="icons/home.svg" class="m-auto" />
+    <span class="text-xs">خانه</span>
+  </div>
+
+  <div class="text-center" [routerLink]="['/orders']">
+    <img src="icons/category-2.svg" class="m-auto" />
+    <span class="text-xs">سفارش ها</span>
+  </div>
+
+  <div [routerLink]="['/mobile-basket']">
+    <img src="icons/shopping-cart.svg" class="m-auto" />
+    <span class="text-xs">سبد خرید</span>
+  </div>
+  @if (isLogin) {
+  <div [routerLink]="['/sign-out']">
+    <img src="icons/login.svg" class="m-auto" />
+    <span class="text-xs">خروج</span>
+  </div>
+  }@else {
+  <div (click)="login()">
+    <img src="icons/login.svg" class="m-auto" />
+    <span class="text-xs">ورود</span>
+  </div>
+  }
+</div>

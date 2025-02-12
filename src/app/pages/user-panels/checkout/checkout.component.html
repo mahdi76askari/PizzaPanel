@@ -1,0 +1,144 @@
+<div class="p-2 mx-2">
+  <div class="flex justify-between flex-wrap md:flex-nowrap">
+    <div class="w-full mx-2">
+      <div class="border rounded-lg">
+        <div class="p-2 my-2">
+          <div>
+            <app-addresses></app-addresses>
+          </div>
+        </div>
+        <div class="p-2 my-2">
+          <a-title>روش پرداخت</a-title>
+          <div>
+            <div
+              class="flex items-center cursor-pointer border rounded-lg p-2 justify-between my-2 hover:bg-gray-100"
+              (click)="selectMethod(0)"
+            >
+              <div>پرداخت آنلاین</div>
+              <div>
+                <app-payment-check
+                  [paymentMethod]="paymentMethod"
+                  [idx]="0"
+                ></app-payment-check>
+              </div>
+            </div>
+            <div
+              class="flex items-center cursor-pointer border rounded-lg p-2 justify-between my-2 hover:bg-gray-100"
+              (click)="selectMethod(1)"
+            >
+              <div>پرداخت اعتباری</div>
+              <div>
+                <app-payment-check
+                  [paymentMethod]="paymentMethod"
+                  [idx]="1"
+                ></app-payment-check>
+              </div>
+            </div>
+            <div
+              class="flex items-center cursor-pointer border rounded-lg p-2 justify-between my-2 hover:bg-gray-100"
+              (click)="selectMethod(2)"
+            >
+              <div>پرداخت در محل</div>
+              <div>
+                <app-payment-check
+                  [paymentMethod]="paymentMethod"
+                  [idx]="2"
+                ></app-payment-check>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-2 my-2">
+          <a-title>زمان ارسال</a-title>
+          <div>
+            <div
+              class="flex items-center cursor-pointer border rounded-lg p-2 justify-between my-2 hover:bg-gray-100"
+              (click)="setTime(null)"
+            >
+              <div>فوری</div>
+              <div>
+                <app-payment-check
+                  [paymentMethod]="sendMode"
+                  [idx]="0"
+                ></app-payment-check>
+              </div>
+            </div>
+            <p
+              class="text-blue-500 cursor-pointer"
+              (click)="timing.style.display = 'block'"
+            >
+              انتخاب زمان دیگر؟
+            </p>
+
+            <div class="hidden" #timing>
+              <div
+                class="flex items-center cursor-pointer border rounded-lg p-2 justify-between my-2 hover:bg-gray-100"
+                (click)="setTime(2)"
+              >
+                <div>
+                  امروز
+
+                  <div>
+                    <span>ساعت: </span>
+                    <a-input-time
+                      [(fc)]="formGroup.controls.clock"
+                    ></a-input-time>
+                  </div>
+                </div>
+                <div>
+                  <app-payment-check
+                    [paymentMethod]="sendMode"
+                    [idx]="2"
+                  ></app-payment-check>
+                </div>
+              </div>
+              <div
+                class="flex items-center cursor-pointer border rounded-lg p-2 justify-between my-2 hover:bg-gray-100"
+                (click)="setTime(1)"
+              >
+                <div>
+                  فردا
+
+                  <div>
+                    <span>ساعت: </span>
+                    <a-input-time
+                      [(fc)]="formGroup.controls.clock"
+                    ></a-input-time>
+                  </div>
+                </div>
+                <div>
+                  <app-payment-check
+                    [paymentMethod]="sendMode"
+                    [idx]="1"
+                  ></app-payment-check>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-2 my-2">
+          <div class="flex items-center justify-between">
+            <div>کد تخفیف دارید؟</div>
+            <div>
+              <a-input-text
+                [(fc)]="formGroup.controls.discountCode"
+                placeholder="کد تخفیف خود را وارد کنید"
+              ></a-input-text>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-full mt-4 md:mt-0 md:w-[450px]">
+      <app-payment-details></app-payment-details>
+    </div>
+    <!-- <div class="w-full mt-4 md:mt-0 md:w-auto">
+      <app-basket-card
+        mode="payment"
+        (createOrder)="createOrder()"
+      ></app-basket-card>
+    </div> -->
+  </div>
+</div>

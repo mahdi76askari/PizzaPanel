@@ -1,0 +1,23 @@
+<div class="p-2 mx-2">
+  <div>
+    <a-title>تاریخچه سفارشات</a-title>
+
+    @for (order of orders; track $index) {
+    <div class="border p-2 rounded-lg flex w-full lg:w-[300px]">
+      <div class="w-full">
+        <div class="flex justify-between w-full">
+          <div>{{ order.orderDate }}</div>
+          <div>{{ order.totalAmount | toman }}</div>
+        </div>
+        <div class="my-2">{{ order.orderStatus | enum }}</div>
+        <div class="my-2">{{ order.branchName }}</div>
+        <div>
+          <a-button [mode]="'primary'" (click)="openDetail(order.orderId)"
+            >جزییات</a-button
+          >
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>

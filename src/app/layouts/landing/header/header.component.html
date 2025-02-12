@@ -1,0 +1,28 @@
+<div>
+  <div>
+    <div class="h-60 overflow-hidden">
+      <div class="relative h-full">
+        <img
+          src="images/banner2.jpg"
+          class="w-full h-full object-cover absolute"
+        />
+        <div class="z-10 absolute w-full text-center top-10">
+          <h1
+            class="text-white text-lg"
+            style="text-shadow: 1px 1px 1px 1px black"
+          >
+            به پیتزا کاریز خوش آمدید
+          </h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    @if (accountService.isLogin()) {
+    <app-menu></app-menu>
+
+    } @else {
+    <app-login-bar></app-login-bar>
+    }
+  </div>
+</div>

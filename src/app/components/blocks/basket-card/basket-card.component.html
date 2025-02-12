@@ -1,0 +1,30 @@
+<div class="bg-white shadow-md rounded-lg p-4 w-80 sticky top-1 m-auto">
+  <div class="flex justify-between items-center border-b pb-3">
+    <h2 class="text-xl font-semibold">
+      سبد خرید ({{ shoppingCartItems.length }})
+    </h2>
+  </div>
+
+  <div class="">
+    @if (shoppingCartItems.length > 0) {
+    <div class="overflow-auto max-h-[calc(100dvh-80px)]">
+      @for (item of shoppingCartItems; track $index) {
+      <app-basket-item [item]="item"></app-basket-item>
+      }
+    </div>
+    <div>
+      @if (mode === 'checkout') {
+      <a-button (click)="checkout()">ثبت سفارش</a-button>
+
+      }@else{
+      <a-button (click)="payment()" mode="success" size="full"
+        >پرداخت
+      </a-button>
+
+      }
+    </div>
+    } @else {
+    <div class="text-center text-gray-500 my-2">سبد خرید خالی است.</div>
+    }
+  </div>
+</div>

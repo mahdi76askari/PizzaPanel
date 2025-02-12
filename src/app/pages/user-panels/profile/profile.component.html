@@ -1,0 +1,41 @@
+<div class="p-2 mx-2">
+  <div class="mt-4">
+    <app-plans></app-plans>
+  </div>
+
+  <div>
+    <a-title>اطلاعات من</a-title>
+    <div class="max-w-md">
+      <div class="flex justify-between items-center my-2">
+        <span>نام و نام خانوادگی</span>
+        <a-input-text [(fc)]="formGroup.controls.name"></a-input-text>
+      </div>
+      <div class="flex justify-between items-center my-2">
+        <span>شماره تماس </span>
+        <a-input-text [(fc)]="formGroup.controls.phone"></a-input-text>
+      </div>
+      <div class="flex justify-between items-center my-2">
+        <span>تاریخ تولد</span>
+        <div class="w-[207px]">
+          <a-input-birthday
+            [(fc)]="formGroup.controls.birthDay"
+          ></a-input-birthday>
+        </div>
+      </div>
+      <div class="flex justify-between items-center my-2">
+        <div>
+          <span>جنسیت</span>
+        </div>
+        <div class="w-[207px]">
+          <a-select
+            [options]="sexual"
+            [(fc)]="formGroup.controls.sexual"
+          ></a-select>
+        </div>
+      </div>
+      <div>
+        <a-button mode="success" (click)="submit()">ذخیره تغییرات</a-button>
+      </div>
+    </div>
+  </div>
+</div>

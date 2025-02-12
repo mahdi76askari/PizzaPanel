@@ -1,0 +1,36 @@
+<div class="border rounded-lg p-2 sticky top-0">
+  <a-title>جزییات پرداخت </a-title>
+  <div class="p-2 my-2 flex items-center justify-between">
+    <div>جمع سفارش</div>
+    @if (basket) {
+    <div class="text-[#343f45] text-[20px] mr-8">
+      {{ basket.totalAmount | toman }} تومان
+    </div>
+    }
+  </div>
+  <div class="p-2 my-2 flex items-center justify-between">
+    <div>مالیات</div>
+    @if (basket) {
+    <div class="text-[#343f45] text-[20px] mr-8">? تومان</div>
+    }
+  </div>
+  <div class="p-2 my-2 flex items-center justify-between">
+    <div>هزینه ارسال</div>
+    @if (basket) {
+    <div class="text-[#343f45] text-[20px] mr-8">
+      {{ basket.shippingCost | toman }} تومان
+    </div>
+    }
+  </div>
+  <div class="p-2 my-2 flex items-center justify-between">
+    <div>مبلغ قابل پرداخت</div>
+    @if (basket) {
+    <div class="text-[#343f45] text-[20px] mr-8">
+      {{ basket.totalAmount | toman }} تومان
+    </div>
+    }
+  </div>
+  <div>
+    <a-button (click)="payment()" mode="success" size="full">پرداخت </a-button>
+  </div>
+</div>

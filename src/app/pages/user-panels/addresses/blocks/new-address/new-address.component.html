@@ -1,0 +1,40 @@
+<div class="p-3 w-full">
+  <div class="m-auto">
+    <p class="my-2">افزودن آدرس جدید</p>
+    <div class="flex items-center flex-wrap">
+      <div class="min-w-[280px] p-2">
+        <div>
+          <span>عنوان</span>
+          <a-input-text [(fc)]="formGroup.controls.caption"></a-input-text>
+        </div>
+        <div>
+          <span> آدرس</span>
+          <a-input-text
+            [(fc)]="formGroup.controls.addressDetail"
+          ></a-input-text>
+        </div>
+        <div>
+          <span>پلاک</span>
+          <a-input-text [(fc)]="formGroup.controls.plaque"></a-input-text>
+        </div>
+        <div>
+          <span>واحد</span>
+          <a-input-text [(fc)]="formGroup.controls.unit"></a-input-text>
+        </div>
+        <div>
+          <span>نوع</span>
+          <a-select
+            [(fc)]="formGroup.controls.addressType"
+            [options]="addressType"
+          ></a-select>
+        </div>
+      </div>
+      <div class="md:mr-4 w-full md:w-[300px]">
+        <div id="map" class="w-full h-[300px]"></div>
+      </div>
+    </div>
+    <div class="mt-4 p-2">
+      <a-button (click)="submit()" size="full">ثبت</a-button>
+    </div>
+  </div>
+</div>

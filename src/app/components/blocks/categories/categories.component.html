@@ -1,0 +1,16 @@
+<div class="bg-white rounded-md my-2 p-2 flex sticky top-0">
+  <div class="overflow-auto w-full">
+    <div class="flex items-center">
+      @for (item of categories; track $index) {
+      <div
+        class="cursor-pointer text-center p-2 border-b m-2"
+        (click)="smoothScroll(item.productGroupId)"
+      >
+        <!-- <img src="images/special-offer.jpg" class="m-auto min-w-10 w-10" /> -->
+        <img [src]="item.base64Image" class="m-auto min-w-10 w-10" />
+        <span class="whitespace-nowrap">{{ item.name }}</span>
+      </div>
+      }
+    </div>
+  </div>
+</div>

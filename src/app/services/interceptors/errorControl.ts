@@ -20,8 +20,10 @@ export function errorControl(
     catchError((error: HttpErrorResponse) => {
       switch (error.status) {
         case 401:
+          localStorage.removeItem('token');
+          localStorage.removeItem('refreshToken');
+          accountService.requestLogin.set(true);
           accountService.isLogin.set(false);
-          window.location.replace('auth/logout');
           break;
         case 403:
           window.location.replace('auth/logout');

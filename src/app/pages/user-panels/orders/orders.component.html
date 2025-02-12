@@ -1,0 +1,56 @@
+<div class="p-2 mx-2">
+  <a-title>سفارش فعال</a-title>
+  @if (orders) {
+  <div>
+    @for (order of orders; track $index) {
+
+    <div class="flex justify-between flex-wrap md:flex-nowrap">
+      <div class="text-center m-auto">
+        <canvas
+          id="dotlottie-canvas"
+          style="width: 300px; height: 300px"
+        ></canvas>
+        <div class="text-center my-2">
+          <p>{{ order.orderStatus | enum }}</p>
+        </div>
+      </div>
+      <div class="border p-6 rounded-lg w-full min-w-36">
+        <div class="my-3">
+          <div class="flex items-center">
+            <div class="text-gray-800 ml-3">تاریخ ثبت :</div>
+            <div>{{ order.orderDate }}</div>
+          </div>
+          <div class="flex items-center">
+            <div class="text-gray-800 ml-3">نوع پرداخت :</div>
+            <div>{{ order.paymentMethod | enum }}</div>
+          </div>
+          <div class="flex items-center">
+            <div class="text-gray-800 ml-3">هزینه ارسال :</div>
+            <div>{{ order.shippingCost | toman }}</div>
+          </div>
+          <div class="flex items-center">
+            <div class="text-gray-800 ml-3">زمان تحویل سفارش :</div>
+            <div>
+              @if (order.deliveryTimeSlot) {
+              {{ order.deliveryTimeSlot }}
+              }@else { فوری }
+            </div>
+          </div>
+          <div class="flex items-center">
+            <div class="text-gray-800 ml-3">جمع کل:</div>
+            <div>{{ order.totalAmount | toman }}</div>
+          </div>
+          <div class="p-2 text-gray-800">
+            <div>
+              <a-button [mode]="'primary'" (click)="openDetail(order.orderId)"
+                >جزییات</a-button
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+  } @else { سفارش فعال ندارید. }
+</div>

@@ -5,6 +5,111 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () =>
+      import('./layouts/landing/layout/layout.component').then(
+        (c) => c.LayoutComponent
+      ),
+    children: [
+      {
+        path: '',
+        loadComponent: () =>
+          import('./pages/home/home.component').then((c) => c.HomeComponent),
+      },
+      {
+        path: 'profile',
+        loadComponent: () =>
+          import('./pages/user-panels/profile/profile.component').then(
+            (c) => c.ProfileComponent
+          ),
+      },
+      {
+        path: 'addresses',
+        loadComponent: () =>
+          import('./pages/user-panels/addresses/addresses.component').then(
+            (c) => c.AddressesComponent
+          ),
+      },
+      {
+        path: 'orders',
+        loadComponent: () =>
+          import('./pages/user-panels/orders/orders.component').then(
+            (c) => c.OrdersComponent
+          ),
+      },
+      {
+        path: 'orders-history',
+        loadComponent: () =>
+          import(
+            './pages/user-panels/orders-history/orders-history.component'
+          ).then((c) => c.OrdersHistoryComponent),
+      },
+      {
+        path: 'checkout',
+        loadComponent: () =>
+          import('./pages/user-panels/checkout/checkout.component').then(
+            (c) => c.CheckoutComponent
+          ),
+      },
+      {
+        path: 'common-questions',
+        loadComponent: () =>
+          import(
+            './pages/others/common-questions/common-questions.component'
+          ).then((c) => c.CommonQuestionsComponent),
+      },
+      {
+        path: 'complaint',
+        loadComponent: () =>
+          import('./pages/others/complaint/complaint.component').then(
+            (c) => c.ComplaintComponent
+          ),
+      },
+      {
+        path: 'criticisms',
+        loadComponent: () =>
+          import('./pages/others/criticisms/criticisms.component').then(
+            (c) => c.CriticismsComponent
+          ),
+      },
+      {
+        path: 'delivery-process',
+        loadComponent: () =>
+          import(
+            './pages/others/delivery-process/delivery-process.component'
+          ).then((c) => c.DeliveryProcessComponent),
+      },
+      {
+        path: 'rules',
+        loadComponent: () =>
+          import('./pages/others/rules/rules.component').then(
+            (c) => c.RulesComponent
+          ),
+      },
+      {
+        path: 'mobile-basket',
+        loadComponent: () =>
+          import(
+            './pages/others/mobile-basket-card/mobile-basket-card.component'
+          ).then((c) => c.MobileBasketCardComponent),
+      },
+      {
+        path: 'plans/buy',
+        loadComponent: () =>
+          import('./pages/user-panels/plans/buy/buy.component').then(
+            (c) => c.BuyComponent
+          ),
+      },
+      {
+        path: 'sign-out',
+        loadComponent: () =>
+          import('./pages/user-panels/sign-out/sign-out.component').then(
+            (c) => c.SignOutComponent
+          ),
+      },
+    ],
+  },
+  {
+    path: 'panel',
+    loadComponent: () =>
       import('./layouts/panel/layout/layout.component').then(
         (c) => c.LayoutComponent
       ),
@@ -18,109 +123,113 @@ export const routes: Routes = [
       {
         path: '404',
         loadComponent: () =>
-          import('./pages/not-found/not-found.component').then(
+          import('./pages/panel/not-found/not-found.component').then(
             (c) => c.NotFoundComponent
           ),
       },
       {
         path: 'dashboard',
         loadComponent: () =>
-          import('./pages/dashboard/dashboard.component').then(
+          import('./pages/panel/dashboard/dashboard.component').then(
             (c) => c.DashboardComponent
           ),
       },
       {
         path: 'branches',
         loadComponent: () =>
-          import('./pages/branches/branches.component').then(
+          import('./pages/panel/branches/branches.component').then(
             (c) => c.BranchesComponent
           ),
       },
       {
         path: 'branches/add',
         loadComponent: () =>
-          import('./pages/branches/add-branch/add-branch.component').then(
+          import('./pages/panel/branches/add-branch/add-branch.component').then(
             (c) => c.AddBranchComponent
           ),
       },
       {
         path: 'orders',
         loadComponent: () =>
-          import('./pages/orders/orders.component').then(
+          import('./pages/panel/orders/orders.component').then(
             (c) => c.OrdersComponent
           ),
       },
       {
         path: 'products',
         loadComponent: () =>
-          import('./pages/products/products.component').then(
+          import('./pages/panel/products/products.component').then(
             (c) => c.ProductsComponent
           ),
       },
       {
         path: 'reports/branch',
         loadComponent: () =>
-          import('./pages/reports/branch-report/branch-report.component').then(
-            (c) => c.BranchReportComponent
-          ),
+          import(
+            './pages/panel/reports/branch-report/branch-report.component'
+          ).then((c) => c.BranchReportComponent),
       },
       {
         path: 'reports/user',
         loadComponent: () =>
-          import('./pages/reports/user-report/user-report.component').then(
-            (c) => c.UserReportComponent
-          ),
+          import(
+            './pages/panel/reports/user-report/user-report.component'
+          ).then((c) => c.UserReportComponent),
       },
       {
         path: 'reports/product',
         loadComponent: () =>
           import(
-            './pages/reports/product-report/product-report.component'
+            './pages/panel/reports/product-report/product-report.component'
           ).then((c) => c.ProductReportComponent),
       },
       {
         path: 'settings',
         loadComponent: () =>
-          import('./pages/settings/settings.component').then(
+          import('./pages/panel/settings/settings.component').then(
             (c) => c.SettingsComponent
           ),
       },
       {
         path: 'plans',
         loadComponent: () =>
-          import('./pages/plans/plans.component').then((c) => c.PlansComponent),
+          import('./pages/panel/plans/plans.component').then(
+            (c) => c.PlansComponent
+          ),
       },
       {
         path: 'plans/add',
         loadComponent: () =>
-          import('./pages/plans/add-plan/add-plan.component').then(
+          import('./pages/panel/plans/add-plan/add-plan.component').then(
             (c) => c.AddPlanComponent
           ),
       },
       {
         path: 'plans/edit/:plan',
         loadComponent: () =>
-          import('./pages/plans/add-plan/add-plan.component').then(
+          import('./pages/panel/plans/add-plan/add-plan.component').then(
             (c) => c.AddPlanComponent
           ),
       },
       {
         path: 'users',
         loadComponent: () =>
-          import('./pages/users/users.component').then((c) => c.UsersComponent),
+          import('./pages/panel/users/users.component').then(
+            (c) => c.UsersComponent
+          ),
       },
 
       {
         path: 'company',
         loadComponent: () =>
-          import('./pages/company/company.component').then(
+          import('./pages/panel/company/company.component').then(
             (c) => c.CompanyComponent
           ),
       },
       {
         path: 'profile',
         loadComponent: () =>
-          import('./pages/profile/profile.component').then(
+          import('./pages/panel/profile/profile.component').then(
             (c) => c.ProfileComponent
           ),
       },
@@ -165,14 +274,14 @@ export const routes: Routes = [
       {
         path: 'login',
         loadComponent: () =>
-          import('./pages/auth/login/login.component').then(
+          import('./pages/panel/auth/login/login.component').then(
             (c) => c.LoginComponent
           ),
       },
       {
         path: 'logout',
         loadComponent: () =>
-          import('./pages/auth/logout/logout.component').then(
+          import('./pages/panel/auth/logout/logout.component').then(
             (c) => c.LogoutComponent
           ),
       },

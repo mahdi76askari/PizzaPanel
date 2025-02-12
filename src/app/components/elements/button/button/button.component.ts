@@ -11,8 +11,13 @@ import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
   styleUrl: './button.component.scss',
 })
 export class ButtonComponent {
-  @Input() type: 'primary' | 'disabled' | 'info' | 'danger' | 'cancel' =
-    'primary';
+  @Input() mode:
+    | 'primary'
+    | 'success'
+    | 'cancel'
+    | 'danger'
+    | 'info'
+    | 'disabled' = 'primary';
   @Input() size: 'full' | 'medium' | 'small' = 'medium';
   @Input() loading: boolean = false;
   @Input() disabled: boolean = false;

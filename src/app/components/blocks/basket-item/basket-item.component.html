@@ -1,0 +1,29 @@
+<div class="flex justify-between items-center mb-3 border-b p-2">
+  <div>
+    <h3 class="text-lg">{{ item.productName }}</h3>
+    <p class="text-gray-500">قیمت: {{ item.unitPrice | toman }}تومان</p>
+    <div class="flex items-center mt-2">
+      <button
+        (click)="changeQuantity(item.shoppingCartItemId, item.quantity - 1)"
+        [disabled]="item.quantity <= 1"
+        class="bg-gray-200 hover:bg-gray-300 px-2 py-1 rounded"
+      >
+        -
+      </button>
+      <span class="mx-2">{{ item.quantity }}</span>
+      <button
+        (click)="changeQuantity(item.shoppingCartItemId, item.quantity + 1)"
+        class="bg-gray-200 hover:bg-gray-300 px-2 py-1 rounded"
+      >
+        +
+      </button>
+    </div>
+  </div>
+  <a-button
+    (click)="removeItem(item.shoppingCartItemId)"
+    [mode]="'cancel'"
+    [loading]="loading"
+  >
+    حذف</a-button
+  >
+</div>

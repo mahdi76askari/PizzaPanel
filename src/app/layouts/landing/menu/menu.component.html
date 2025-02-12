@@ -1,0 +1,12 @@
+<div class="flex items-center border border-x-0 overflow-auto">
+  @for (item of menu; track $index) {
+  <div
+    [routerLink]="[item.url]"
+    routerLinkActive="router-link-active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    class="p-2 px-6 cursor-pointer border border-white hover:bg-gray-100 hover:border-gray-200 whitespace-nowrap example"
+  >
+    {{ item.title }}
+  </div>
+  }
+</div>

@@ -13,6 +13,10 @@ export class SettingService {
     return this.motherService.get(this.api + param);
   }
 
+  getCartConfig(param: string) {
+    return this.motherService.get(this.api + '/orderCart-config' + param);
+  }
+
   updateSetting(param: string, body: any) {
     return this.motherService.put(this.api + '/UpdateValue' + param, body);
   }

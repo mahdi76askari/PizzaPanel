@@ -1,0 +1,37 @@
+<div class="p-5 w-72">
+  @if (!isOtpSent) {
+  <div>
+    <p>شماره همراه خود را وارد کنید:</p>
+  </div>
+  <div class="my-3">
+    <a-input-phone [(phone)]="phone"></a-input-phone>
+  </div>
+  <div>
+    <a-button
+      [mode]="phone.status === 'VALID' ? 'primary' : 'disabled'"
+      size="full"
+      [loading]="loading"
+      (click)="sendOtp()"
+    >
+      ادامه</a-button
+    >
+  </div>
+  } @else {
+  <div>
+    <p>کد ورود برای شماره {{ phone.value }} ارسال شد.</p>
+  </div>
+  <div class="my-3">
+    <a-input-otp [(fc)]="otp"></a-input-otp>
+  </div>
+  <div>
+    <a-button
+      [mode]="otp.status === 'VALID' ? 'success' : 'disabled'"
+      size="full"
+      [loading]="loading"
+      (click)="verifyOtp()"
+    >
+      ورود</a-button
+    >
+  </div>
+  }
+</div>

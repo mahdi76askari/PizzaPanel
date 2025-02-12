@@ -1,0 +1,26 @@
+<div class="p-6 min-w-80">
+  <div class="mb-2">
+    <p>اقلام سفارش:</p>
+  </div>
+  <div>
+    <table class="border w-full">
+      <thead>
+        <th colspan="2">عنوان</th>
+        <th>تعداد</th>
+      </thead>
+
+      @for (item of detail.cartItemes; track $index) {
+      <tr>
+        <td>
+          <img class="w-[50px]" [src]="item.photoUrl" />
+        </td>
+        <td>{{ item.productTitle }}</td>
+        <td class="border text-center">{{ item.quantity }}</td>
+      </tr>
+      }
+    </table>
+  </div>
+  <div class="mt-2">
+    <a-button (click)="onNoClick()">باشه</a-button>
+  </div>
+</div>
