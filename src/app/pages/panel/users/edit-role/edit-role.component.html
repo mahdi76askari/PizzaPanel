@@ -7,7 +7,8 @@
     <span> نقش کاربری</span>
     <a-select [options]="rols" [(fc)]="roleId"></a-select>
   </div>
-  <div>
+  <div class="flex items-center w-full justify-between p-2">
     <a-button (click)="change()">تغییر نقش</a-button>
+    <a-button (click)="close()"> انصراف</a-button>
   </div>
 </div>

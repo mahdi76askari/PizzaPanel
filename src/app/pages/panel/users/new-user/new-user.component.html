@@ -14,10 +14,7 @@
           <span> اعتبار کاربر</span>
           <a-input-text [(fc)]="creditAmount"></a-input-text>
         </div>
-        <div>
-          <span> نقش کاربری</span>
-          <a-select [options]="rols" [(fc)]="roleId"></a-select>
-        </div>
+
         <div>
           <span>شرکت وابسته</span>
           <a-select [options]="companies" [(fc)]="companyId"></a-select>
@@ -27,7 +24,7 @@
           <a-select [options]="plans" [(fc)]="planId"></a-select>
         </div>
 
-        <div>
+        <div class="mt-2">
           <span> تاریخ شروع پلن کاربر </span>
           <input
             dir="ltr"

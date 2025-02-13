@@ -33,7 +33,7 @@ export class NewUserComponent implements OnInit {
   roleId = new FormControl('Customer');
   companyId = new FormControl('');
 
-  planId = new FormControl('');
+  planId = new FormControl();
 
   plans: any = [
     {
@@ -86,6 +86,9 @@ export class NewUserComponent implements OnInit {
     this.planId.patchValue(this.data.user.planId);
     this.companyId.patchValue(this.data.user.companyId);
     this.creditAmount.patchValue(this.data.user.creditAmount);
+    if (!this.data.user.planId) {
+      this.planId.patchValue(0);
+    }
     this.planActivationDate.patchValue(this.data.user.planActivationDate);
   }
 
@@ -96,11 +99,18 @@ export class NewUserComponent implements OnInit {
       roleName: this.roleId.value,
     };
 
+    if (this.planActivationDate.value?.length) {
+      body.planActivationDate = this.dateFixer(this.planActivationDate.value);
+    }
+
     if (this.companyId.value) {
       body.companyId = Number(this.companyId.value);
     }
     if (this.planId.value) {
       body.planId = Number(this.planId.value);
+    } else {
+      body.planId = 0;
+      body.planActivationDate = null;
     }
 
     if (this.mode === 'add') {
@@ -162,5 +172,33 @@ export class NewUserComponent implements OnInit {
 
   cancel() {
     this.dialogRef.close();
+  }
+
+  dateFixer(val: string) {
+    if (val.length == 16) {
+      return val;
+    } else {
+      let x = val.split('');
+      // console.log(x);
+      return (
+        x[0] +
+        x[1] +
+        x[2] +
+        x[3] +
+        '/' +
+        x[4] +
+        x[5] +
+        '/' +
+        x[6] +
+        x[7] +
+        ' ' +
+        x[8] +
+        x[9] +
+        ':' +
+        x[10] +
+        x[11] +
+        ':00'
+      );
+    }
   }
 }

@@ -52,4 +52,8 @@ export class EditRoleComponent implements OnInit {
       },
     });
   }
+
+  close() {
+    this.dialogRef.close();
+  }
 }
