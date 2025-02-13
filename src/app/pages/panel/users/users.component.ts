@@ -39,6 +39,7 @@ export class UsersComponent {
     'create_date',
     'status',
     'planName',
+    'planActivationDate',
     'planExpirationDateShamsi',
     'action',
   ];

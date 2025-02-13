@@ -53,9 +53,6 @@ export class OrdersComponent implements OnInit, OnDestroy {
       ' ' +
       '10:00';
 
-    console.log(this.fromDate);
-    console.log(fDate.jd.toString().padStart(2, '0'));
-
     this.toDate =
       fDate.jy +
       '/' +

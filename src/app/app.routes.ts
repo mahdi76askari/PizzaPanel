@@ -8,6 +8,7 @@ export const routes: Routes = [
       import('./layouts/landing/layout/layout.component').then(
         (c) => c.LayoutComponent
       ),
+    // app routes
     children: [
       {
         path: '',
@@ -114,6 +115,7 @@ export const routes: Routes = [
         (c) => c.LayoutComponent
       ),
     canActivate: [accessGuard],
+    // panel routes
     children: [
       {
         path: '',

@@ -13,7 +13,12 @@
       <div class="text-green-700">فعال</div>
     </div>
     <div>
-      <p>هزینه : {{ plan.planPrice | toman }} تومان</p>
+      <p>قیمت قابل خرید : {{ plan.planPrice | toman }} تومان</p>
+    </div>
+    <div>
+      <p class="line-through">
+        قیمت اصلی : {{ plan.originalPrice | toman }} تومان
+      </p>
     </div>
     <div>
       <p>سطح کاربر : {{ plan.productPriceLevel }}</p>
@@ -46,7 +51,9 @@
     </div>
 
     <div class="flex justify-between my-2">
-      <a-button [routerLink]="['/plans/edit/' + plan.planId]"> ویرایش</a-button>
+      <a-button [routerLink]="['/panel/plans/edit/' + plan.planId]">
+        ویرایش</a-button
+      >
     </div>
   </div>
   }

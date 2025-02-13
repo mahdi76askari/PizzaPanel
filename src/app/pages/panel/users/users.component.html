@@ -47,6 +47,13 @@
       <td mat-cell *matCellDef="let transaction">{{ transaction.planName }}</td>
     </ng-container>
 
+    <ng-container matColumnDef="planActivationDate">
+      <th mat-header-cell *matHeaderCellDef>تاریخ شروع پلن</th>
+      <td mat-cell *matCellDef="let transaction">
+        {{ transaction.planActivationDate }}
+      </td>
+    </ng-container>
+
     <ng-container matColumnDef="planExpirationDateShamsi">
       <th mat-header-cell *matHeaderCellDef>تاریخ انقضا پلن</th>
       <td mat-cell *matCellDef="let transaction">

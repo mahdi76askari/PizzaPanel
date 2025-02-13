@@ -3,29 +3,44 @@ import { SelectComponent } from '../../../../components/elements/forms/select/se
 import { ButtonComponent } from '../../../../components/elements/button/button/button.component';
 import { InputTextComponent } from '../../../../components/elements/forms/input-text/input-text.component';
 import { AdminService } from '../../../../services/http/admin.service';
-import { FormControl, FormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PlansService } from '../../../../services/http/plans.service';
 import { CompanyService } from '../../../../services/http/company.service';
 import { AlertService } from '../../../../services/tools/alert.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
   selector: 'app-new-user',
   standalone: true,
   templateUrl: './new-user.component.html',
   styleUrls: ['./new-user.component.css'],
-  imports: [SelectComponent, ButtonComponent, InputTextComponent, FormsModule],
+  imports: [
+    SelectComponent,
+    ButtonComponent,
+    InputTextComponent,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxMaskDirective,
+  ],
 })
 export class NewUserComponent implements OnInit {
   phoneNumber = new FormControl('');
   firstNameAndLastName = new FormControl('');
+  creditAmount = new FormControl('');
+  planActivationDate = new FormControl('');
 
   roleId = new FormControl('Customer');
   companyId = new FormControl('');
 
   planId = new FormControl('');
 
-  plans: any = [];
+  plans: any = [
+    {
+      name: 'بدون پلن',
+      value: 0,
+    },
+  ];
   companies: any = [];
 
   rols = [
@@ -70,6 +85,8 @@ export class NewUserComponent implements OnInit {
     this.phoneNumber.patchValue(this.data.user.phoneNumber);
     this.planId.patchValue(this.data.user.planId);
     this.companyId.patchValue(this.data.user.companyId);
+    this.creditAmount.patchValue(this.data.user.creditAmount);
+    this.planActivationDate.patchValue(this.data.user.planActivationDate);
   }
 
   save() {
@@ -118,12 +135,13 @@ export class NewUserComponent implements OnInit {
     const param = '';
     this.plansService.getPlans(param).subscribe({
       next: (v: any) => {
-        this.plans = v.data.map((d: any) => {
+        const planList = v.data.map((d: any) => {
           return {
             value: d.planId,
             name: d.planName,
           };
         });
+        this.plans.push(...planList);
       },
     });
   }
