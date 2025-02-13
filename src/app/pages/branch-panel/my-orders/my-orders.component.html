@@ -1,5 +1,5 @@
 <div>
-  <table>
+  <table class="w-full">
     <thead>
       <th>شماره</th>
       <th>مشتری</th>
@@ -20,6 +20,10 @@
         <td>{{ item.orderDate | shamsiTime }}</td>
         <td>{{ item.orderDate | shamsiTime }}</td>
         <td>{{ item.orderStatus | enum }}</td>
+      </tr>
+      } @if (orders.length == 0) {
+      <tr>
+        <td colspan="5">سفارشی ثبت نشده.</td>
       </tr>
       }
     </tbody>

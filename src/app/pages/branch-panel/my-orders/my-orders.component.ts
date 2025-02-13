@@ -15,7 +15,7 @@ import { DetailsComponent } from './details/details.component';
   styleUrl: './my-orders.component.scss',
 })
 export class MyOrdersComponent {
-  orders: any = [];
+  orders: any[] = [];
 
   dialog = inject(MatDialog);
   constructor(

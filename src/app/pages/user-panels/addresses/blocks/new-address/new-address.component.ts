@@ -95,7 +95,7 @@ export class NewAddressComponent implements OnInit, AfterViewInit {
       addressDetail: this.formGroup.controls.addressDetail.value,
       plaque: this.formGroup.controls.plaque.value,
       unit: this.formGroup.controls.unit.value,
-      addressType: this.formGroup.controls.addressType.value,
+      addressType: Number(this.formGroup.controls.addressType.value),
       latitude: this.lat,
       longitude: this.lng,
     };

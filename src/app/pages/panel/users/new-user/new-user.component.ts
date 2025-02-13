@@ -80,10 +80,10 @@ export class NewUserComponent implements OnInit {
     };
 
     if (this.companyId.value) {
-      body.companyId = this.companyId.value;
+      body.companyId = Number(this.companyId.value);
     }
     if (this.planId.value) {
-      body.planId = this.planId.value;
+      body.planId = Number(this.planId.value);
     }
 
     if (this.mode === 'add') {

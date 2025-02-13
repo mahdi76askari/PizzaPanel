@@ -1,0 +1,36 @@
+<div class="p-6">
+  <div>
+    @for (item of data.role; track $index) {
+    <div>
+      @if (item === 'Admin') {
+
+      <div
+        (click)="close()"
+        class="p-2 border rounded-xl my-3 text-center cursor-pointer hover:bg-gray-100"
+        [routerLink]="['/panel']"
+      >
+        پنل مدیریت
+      </div>
+      } @else if (item === 'BranchManager') {
+
+      <div
+        (click)="close()"
+        class="p-2 border rounded-xl my-3 text-center cursor-pointer hover:bg-gray-100"
+        [routerLink]="['/branch-panel']"
+      >
+        پنل شعبه دار
+      </div>
+      } @else if (item === 'Customer') {
+
+      <div
+        (click)="close()"
+        class="p-2 border rounded-xl my-3 text-center cursor-pointer hover:bg-gray-100"
+        [routerLink]="['/']"
+      >
+        پنل مشتری
+      </div>
+      }
+    </div>
+    }
+  </div>
+</div>
