@@ -7,49 +7,52 @@
   >
 </div>
 
-<div class="grid grid-cols-3 gap-4">
+<div class="grid grid-cols-2 gap-6">
   @for (plan of plans; track $index) {
   <div class="p-2 border border-green-700 rounded-xl bg-white">
     <div class="flex justify-between my-2">
-      <div>{{ plan.planName }}</div>
+      <div class="text-green-700 font-bold">{{ plan.planName }}</div>
       <div class="text-green-700">فعال</div>
     </div>
-    <div>
-      <p>قیمت قابل خرید : {{ plan.planPrice | toman }} تومان</p>
-    </div>
-    <div>
-      <p class="line-through">
-        قیمت اصلی : {{ plan.originalPrice | toman }} تومان
-      </p>
-    </div>
-    <div>
-      <p>سطح کاربر : {{ plan.productPriceLevel }}</p>
-    </div>
-    <div class="flex justify-between my-2">
-      <div>گارانتی نصف قیمت: {{ plan.guaranteeReturnTimeHalf }} دقیقه</div>
-    </div>
-    <div class="flex justify-between my-2">
-      <div>گارانتی رایگان : {{ plan.guaranteeReturnTimeFull }} دقیقه</div>
-    </div>
-    <div class="flex justify-between my-2">
-      <div>مدت : {{ plan.durationInMonths }}</div>
-    </div>
-    <div class="flex justify-between my-2">
-      <div>هزینه ارسال : {{ plan.deliveryFee | toman }} تومان</div>
-    </div>
 
-    <div class="flex justify-between my-2">
-      @if (plan.allowsFloatingAddress) {
-      <div>اجازه تغییر آدرس : دارد</div>
+    <div class="my-5">
+      <div>
+        <p>قیمت قابل خرید : {{ plan.planPrice | toman }} تومان</p>
+      </div>
+      <div>
+        <p class="line-through">
+          قیمت اصلی : {{ plan.originalPrice | toman }} تومان
+        </p>
+      </div>
+      <div>
+        <p>سطح کاربر : {{ plan.productPriceLevel }}</p>
+      </div>
+      <div class="flex justify-between my-2">
+        <div>گارانتی نصف قیمت: {{ plan.guaranteeReturnTimeHalf }} دقیقه</div>
+      </div>
+      <div class="flex justify-between my-2">
+        <div>گارانتی رایگان : {{ plan.guaranteeReturnTimeFull }} دقیقه</div>
+      </div>
+      <div class="flex justify-between my-2">
+        <div>مدت : {{ plan.durationInMonths }}</div>
+      </div>
+      <div class="flex justify-between my-2">
+        <div>هزینه ارسال : {{ plan.deliveryFee | toman }} تومان</div>
+      </div>
 
-      }@else {
-      <div>اجازه تغییر آدرس : ندراد</div>
+      <div class="flex justify-between my-2">
+        @if (plan.allowsFloatingAddress) {
+        <div>اجازه تغییر آدرس : دارد</div>
 
-      }
-    </div>
+        }@else {
+        <div>اجازه تغییر آدرس : ندراد</div>
 
-    <div class="flex justify-between my-2">
-      <div>دفعات مجاز تغییر آدرس : {{ plan.allowedAddressChanges }}</div>
+        }
+      </div>
+
+      <div class="flex justify-between my-2">
+        <div>دفعات مجاز تغییر آدرس : {{ plan.allowedAddressChanges }}</div>
+      </div>
     </div>
 
     <div class="flex justify-between my-2">

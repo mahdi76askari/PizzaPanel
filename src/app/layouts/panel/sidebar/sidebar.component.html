@@ -35,18 +35,18 @@
     >
       <div>
         <a-circle-button
-          [routerLink]="['/auth/logout']"
+          [routerLink]="['/panel/auth/logout']"
           (click)="itemId = ' 0'"
         >
           <a-icon name="pi-sign-out"></a-icon>
         </a-circle-button>
       </div>
-      <div [routerLink]="['/settings']" (click)="itemId = ' 0'">
+      <div [routerLink]="['/panel/settings']" (click)="itemId = ' 0'">
         <a-circle-button>
           <a-icon name="pi-cog"></a-icon>
         </a-circle-button>
       </div>
-      <div [routerLink]="['/profile']" (click)="itemId = ' 0'">
+      <div [routerLink]="['/panel/profile']" (click)="itemId = ' 0'">
         <a-circle-button>
           <a-icon name="pi-user"></a-icon>
         </a-circle-button>

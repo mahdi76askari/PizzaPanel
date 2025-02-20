@@ -2,10 +2,11 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 import { RouterModule } from '@angular/router';
 import { IconComponent } from '../../../components/elements/fonts/icon/icon.component';
+import { ButtonComponent } from '../../../components/elements/button/button/button.component';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterModule, IconComponent],
+  imports: [RouterModule, IconComponent, ButtonComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })

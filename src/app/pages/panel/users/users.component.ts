@@ -8,6 +8,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { NewUserComponent } from './new-user/new-user.component';
 import { EditRoleComponent } from './edit-role/edit-role.component';
+import { EnumPipe } from '../../../pipes/enum.pipe';
 interface Users {
   id: string;
   name: string;
@@ -26,6 +27,7 @@ interface Users {
     ButtonComponent,
     TomanPipe,
     MatPaginatorModule,
+    EnumPipe,
   ],
   templateUrl: './users.component.html',
   styleUrl: './users.component.scss',
@@ -34,6 +36,7 @@ export class UsersComponent {
   displayedColumns: string[] = [
     'userId',
     'name',
+    'roles',
     'mobile',
     'address',
     'create_date',

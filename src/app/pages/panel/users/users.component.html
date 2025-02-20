@@ -17,6 +17,18 @@
       </td>
     </ng-container>
 
+    <ng-container matColumnDef="roles">
+      <th mat-header-cell *matHeaderCellDef>دسترسی ها</th>
+      <td mat-cell *matCellDef="let transaction">
+        @for (role of transaction.roles; track $index) {
+        <span class="whitespace-nowrap inline-block text-blue-900">{{
+          role | enum
+        }}</span>
+
+        }
+      </td>
+    </ng-container>
+
     <ng-container matColumnDef="mobile">
       <th mat-header-cell *matHeaderCellDef>موبایل</th>
       <td mat-cell *matCellDef="let transaction">

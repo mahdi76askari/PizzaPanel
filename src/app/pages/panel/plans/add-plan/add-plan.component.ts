@@ -108,7 +108,7 @@ export class AddPlanComponent implements OnInit {
   }
 
   save() {
-    console.log(this.draw.getAll());
+    console.log(this.draw.getAll().features[0].geometry.coordinates[0]);
 
     const body = {
       deliveryFee: this.form.controls.deliveryFee.value,
@@ -119,7 +119,9 @@ export class AddPlanComponent implements OnInit {
       planName: this.form.controls.planName.value,
       planPrice: this.form.controls.planPrice.value,
       originalPrice: this.form.controls.originalPrice.value,
-      selectedAreaPolygon: '', //this.draw.getAll().features[0].geometry.coordinates[0],
+      selectedAreaPolygon: JSON.stringify({
+        polygon: this.draw.getAll().features[0].geometry.coordinates[0],
+      }),
     };
 
     if (this.mode == 'edit') {

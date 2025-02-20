@@ -38,6 +38,15 @@ export class EnumPipe implements PipeTransform {
       case 'CashOnDelivery':
         result = 'پرداخت در محل';
         break;
+      case 'Admin':
+        result = 'مدیریت';
+        break;
+      case 'BranchManager':
+        result = 'مدیر شعبه';
+        break;
+      case 'Customer':
+        result = 'مشتری';
+        break;
 
       default:
         break;

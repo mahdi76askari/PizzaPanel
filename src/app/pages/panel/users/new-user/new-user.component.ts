@@ -96,11 +96,15 @@ export class NewUserComponent implements OnInit {
     let body: any = {
       phoneNumber: this.phoneNumber.value,
       firstNameAndLastName: this.firstNameAndLastName.value,
-      roleName: this.roleId.value,
+      creditAmount: this.creditAmount.value,
     };
 
     if (this.planActivationDate.value?.length) {
-      body.planActivationDate = this.dateFixer(this.planActivationDate.value);
+      if (this.planActivationDate.value?.length != 19) {
+        body.planActivationDate = this.dateFixer(this.planActivationDate.value);
+      } else {
+        body.planActivationDate = this.planActivationDate.value;
+      }
     }
 
     if (this.companyId.value) {
@@ -114,6 +118,7 @@ export class NewUserComponent implements OnInit {
     }
 
     if (this.mode === 'add') {
+      body.roleName = this.roleId.value;
       this.adminService.newUser(body).subscribe({
         next: (v: any) => {
           this.companyId.reset();
@@ -136,6 +141,7 @@ export class NewUserComponent implements OnInit {
           this.roleId.reset();
 
           this.alertService.success({ title: 'کاربر  ویرایش شد', msg: '' });
+          this.cancel();
         },
       });
     }

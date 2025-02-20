@@ -80,6 +80,9 @@ export class LoginComponent implements OnInit {
           this.getProfile();
 
           // open list to select panel user wants to go
+
+          localStorage.setItem('roles', v.data.role.toString());
+
           if (v.data.role.length > 1) {
             this.matDialog.open(SelectPanelComponent, {
               data: { role: v.data.role },
