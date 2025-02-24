@@ -18,13 +18,10 @@ import { PaymentDetailsComponent } from './blocks/payment-details/payment-detail
   selector: 'app-checkout',
   standalone: true,
   imports: [
-    BasketCardComponent,
     AddressesComponent,
     TitleComponent,
-    InputTextComponent,
     PaymentCheckComponent,
     InputTimeComponent,
-    TomanPipe,
     PaymentDetailsComponent,
   ],
   templateUrl: './checkout.component.html',
@@ -108,4 +105,6 @@ export class CheckoutComponent implements OnInit {
       error: (e: any) => {},
     });
   }
+
+  payment() {}
 }

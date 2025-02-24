@@ -39,6 +39,10 @@ export class AddPlanComponent implements OnInit {
 
   userLevels = [
     {
+      name: 'سطح صفر',
+      value: '0',
+    },
+    {
       name: 'سطح اول',
       value: '1',
     },
@@ -67,8 +71,21 @@ export class AddPlanComponent implements OnInit {
     },
   ];
 
+  status = [
+    {
+      name: 'فعال ',
+      value: 'true',
+    },
+    {
+      name: ' غیر فعال ',
+      value: 'false',
+    },
+  ];
+
   mode: string = 'add';
   planId: any = 0;
+
+  polygon: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -83,16 +100,19 @@ export class AddPlanComponent implements OnInit {
           this.getPlan(v.plan);
           this.mode = 'edit';
           this.planId = v.plan;
+        } else {
+          this.mapInit();
         }
       },
     });
-
-    this.mapInit();
   }
 
   getPlan(param: any) {
     this.plansService.getPlan(param).subscribe({
       next: (v: any) => {
+        this.polygon = JSON.parse(v.data.selectedAreaPolygon);
+        console.log(this.polygon);
+
         this.form.patchValue({
           deliveryFee: v.data.deliveryFee,
           code: v.data.code,
@@ -102,7 +122,13 @@ export class AddPlanComponent implements OnInit {
           planName: v.data.planName,
           planPrice: v.data.planPrice,
           originalPrice: v.data.originalPrice,
+          isActive: v.data.isActive,
+          productPriceLevel: v.data.productPriceLevel,
+          allowedAddressChanges: v.data.allowedAddressChanges,
+          allowsFloatingAddress: v.data.allowsFloatingAddress,
         });
+
+        this.mapInit();
       },
     });
   }
@@ -119,6 +145,11 @@ export class AddPlanComponent implements OnInit {
       planName: this.form.controls.planName.value,
       planPrice: this.form.controls.planPrice.value,
       originalPrice: this.form.controls.originalPrice.value,
+      isActive: this.form.controls.isActive.value == 'true' ? true : false,
+      allowedAddressChanges: this.form.controls.allowedAddressChanges.value,
+      allowsFloatingAddress:
+        this.form.controls.allowsFloatingAddress.value == 'true' ? true : false,
+      productPriceLevel: this.form.controls.productPriceLevel.value,
       selectedAreaPolygon: JSON.stringify({
         polygon: this.draw.getAll().features[0].geometry.coordinates[0],
       }),
@@ -203,5 +234,44 @@ export class AddPlanComponent implements OnInit {
       defaultMode: 'draw_polygon',
     });
     this.map.addControl(this.draw);
+
+    if (this.mode === 'edit') {
+      this.map.on('load', () => {
+        this.map.addSource('maine', {
+          type: 'geojson',
+          data: {
+            type: 'Feature',
+            geometry: {
+              type: 'Polygon',
+              // These coordinates outline Maine.
+              coordinates: [this.polygon.polygon],
+            },
+          },
+        });
+
+        // Add a new layer to visualize the polygon.
+        this.map.addLayer({
+          id: 'maine',
+          type: 'fill',
+          source: 'maine', // reference the data source
+          layout: {},
+          paint: {
+            'fill-color': '#0080ff', // blue color fill
+            'fill-opacity': 0.5,
+          },
+        });
+        // Add a black outline around the polygon.
+        this.map.addLayer({
+          id: 'outline',
+          type: 'line',
+          source: 'maine',
+          layout: {},
+          paint: {
+            'line-color': '#000',
+            'line-width': 3,
+          },
+        });
+      }); // end loading
+    }
   }
 }

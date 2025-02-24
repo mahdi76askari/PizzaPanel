@@ -26,7 +26,7 @@
               class="flex items-center cursor-pointer border rounded-lg p-2 justify-between my-2 hover:bg-gray-100"
               (click)="selectMethod(1)"
             >
-              <div>پرداخت اعتباری</div>
+              <div>پرداخت با کیف پول</div>
               <div>
                 <app-payment-check
                   [paymentMethod]="paymentMethod"
@@ -132,13 +132,7 @@
     </div>
 
     <div class="w-full mt-4 md:mt-0 md:w-[450px]">
-      <app-payment-details></app-payment-details>
+      <app-payment-details (payment)="payment()"></app-payment-details>
     </div>
-    <!-- <div class="w-full mt-4 md:mt-0 md:w-auto">
-      <app-basket-card
-        mode="payment"
-        (createOrder)="createOrder()"
-      ></app-basket-card>
-    </div> -->
   </div>
 </div>

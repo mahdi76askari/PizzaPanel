@@ -6,6 +6,8 @@ import { AddressService } from '../../../../../services/http/address.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import nmp_mapboxgl from '@neshan-maps-platform/mapbox-gl';
 import { SelectComponent } from '../../../../../components/elements/forms/select/select.component';
+import { AccountService } from '../../../../../services/http/account.service';
+import { AlertService } from '../../../../../services/tools/alert.service';
 
 @Component({
   selector: 'app-new-address',
@@ -45,7 +47,11 @@ export class NewAddressComponent implements OnInit, AfterViewInit {
     },
   ];
 
-  constructor(private addressService: AddressService) {}
+  constructor(
+    private addressService: AddressService,
+    private accountService: AccountService,
+    private alert: AlertService
+  ) {}
 
   ngOnInit() {}
 
@@ -99,9 +105,12 @@ export class NewAddressComponent implements OnInit, AfterViewInit {
       latitude: this.lat,
       longitude: this.lng,
     };
-    this.addressService.newAddress(body).subscribe({
+    this.accountService.assignAddress(body).subscribe({
       next: (v: any) => {
         this.dialogRef.close();
+      },
+      error: (e: any) => {
+        this.alert.error({ title: e.error.message, msg: '' });
       },
     });
   }

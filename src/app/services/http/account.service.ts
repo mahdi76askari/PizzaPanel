@@ -43,6 +43,6 @@ export class AccountService {
   }
 
   assignAddress(body: any) {
-    return this.motherService.post(this.api + '/assign-address', body);
+    return this.motherService.post(this.api + '/add-assign-address', body);
   }
 }

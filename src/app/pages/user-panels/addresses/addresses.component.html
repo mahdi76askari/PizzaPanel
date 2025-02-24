@@ -8,18 +8,18 @@
   <div class="flex mt-5 flex-wrap">
     @for (item of addresses; track $index) {
     <div
-      class="flex items-center justify-between my-4 md:m-4 border rounded-lg p-3 px-6 w-full md:min-w-[400px] md:w-auto"
+      class="flex items-center justify-between my-4 md:m-4 border rounded-lg p-3 px-6 w-full"
       [ngClass]="{ 'border-green-700': item.addressId == selectedAddress }"
     >
       <div>
         <span>عنوان : {{ item.caption }}</span>
         <div>آدرس : {{ item.addressDetail }}</div>
       </div>
-      @if (item.addressId != selectedAddress) {
+      <!-- @if (item.addressId != selectedAddress) {
       <div class="mr-3">
         <a-button (click)="assign(item.addressId)">انتخاب</a-button>
       </div>
-      }
+      } -->
     </div>
     } @if (addresses.length == 0) {
     <div>

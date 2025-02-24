@@ -59,6 +59,14 @@
             [options]="userLevels"
           ></a-select>
         </div>
+
+        <div>
+          <span>وضعیت </span>
+          <a-select
+            [(fc)]="form.controls.isActive"
+            [options]="status"
+          ></a-select>
+        </div>
         <div class="flex items-center justify-between mt-2">
           <a-button (click)="save()">ذخیره</a-button>
           <a-button [routerLink]="['/panel/plans']">بازگشت</a-button>

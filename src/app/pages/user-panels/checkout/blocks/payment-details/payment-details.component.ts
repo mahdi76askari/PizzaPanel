@@ -1,8 +1,16 @@
-import { Component, effect, OnInit } from '@angular/core';
+import {
+  Component,
+  effect,
+  EventEmitter,
+  inject,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { TitleComponent } from '../../../../../components/elements/forms/title/title.component';
 import { TomanPipe } from '../../../../../pipes/toman.pipe';
 import { BasketService } from '../../../../../services/http/basket.service';
 import { ButtonComponent } from '../../../../../components/elements/button/button/button.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-payment-details',
@@ -13,7 +21,9 @@ import { ButtonComponent } from '../../../../../components/elements/button/butto
 })
 export class PaymentDetailsComponent implements OnInit {
   basket: any;
+  @Output() payment = new EventEmitter();
 
+  matDialog = inject(MatDialog);
   constructor(private basketService: BasketService) {
     this.basketService.getCart('');
     effect(() => {
@@ -22,6 +32,4 @@ export class PaymentDetailsComponent implements OnInit {
   }
 
   ngOnInit() {}
-
-  payment() {}
 }
